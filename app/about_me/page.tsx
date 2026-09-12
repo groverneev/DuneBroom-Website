@@ -1,92 +1,51 @@
+import type { Metadata } from "next";
 import Image from "next/image";
+
+export const metadata: Metadata = {
+  title: "About Neev Grover",
+  description:
+    "Neev Grover is the student inventor behind DuneBroom, an autonomous beach-cleaning robot combining machine-learning vision with mechanical sieving.",
+  alternates: { canonical: "/about_me" },
+  openGraph: {
+    title: "About Neev Grover | DuneBroom",
+    description:
+      "Neev Grover is the student inventor behind DuneBroom, an autonomous beach-cleaning robot combining machine-learning vision with mechanical sieving.",
+    url: "/about_me",
+    images: [
+      {
+        url: "/DuneBroom_Robot.jpg",
+        width: 1200,
+        height: 630,
+        alt: "DuneBroom autonomous beach-cleaning robot",
+      },
+    ],
+  },
+};
 
 export default function AboutPage() {
   return (
-    <main style={{ fontFamily: "Inter, sans-serif", background: "var(--background)", minHeight: "100vh", transition: "background-color 0.3s" }}>
-      <section
-        style={{
-          maxWidth: 860,
-          margin: "0 auto",
-          padding: "4rem 2rem 6rem 2rem",
-        }}
-      >
-        <p
-          style={{
-            fontSize: 12,
-            fontWeight: 600,
-            letterSpacing: "0.1em",
-            textTransform: "uppercase",
-            color: "var(--accent)",
-            margin: "0 0 8px 0",
-          }}
-        >
+    <main id="main-content" className="bg-background transition-colors duration-300">
+      <section className="py-16 max-w-[860px] mx-auto px-8">
+        <p className="text-sm font-semibold text-accent uppercase tracking-wide mb-2 mt-0">
           The Creator
         </p>
-        <h1
-          style={{
-            fontSize: 44,
-            fontWeight: 800,
-            letterSpacing: "-0.03em",
-            color: "var(--foreground)",
-            marginBottom: "3rem",
-            marginTop: 0,
-          }}
-        >
+        <h1 className="text-5xl font-extrabold tracking-tight text-foreground mb-10 mt-0">
           About
         </h1>
 
         {/* Profile */}
-        <div
-          style={{
-            display: "flex",
-            gap: "3rem",
-            alignItems: "flex-start",
-            marginBottom: "3.5rem",
-            flexWrap: "wrap",
-          }}
-        >
+        <div className="flex gap-9 items-start mb-10 flex-wrap">
           <Image
             src="/neev_profile.png"
             alt="Neev Grover, founder of DuneBroom"
             width={160}
             height={160}
-            style={{
-              borderRadius: "50%",
-              flexShrink: 0,
-              display: "block",
-              background: "var(--surface)",
-            }}
+            className="rounded-full bg-surface shrink-0"
           />
-          <div style={{ flex: 1, minWidth: 240 }}>
-            <h2
-              style={{
-                fontSize: 30,
-                fontWeight: 700,
-                letterSpacing: "-0.02em",
-                margin: "0 0 0.25rem 0",
-                color: "var(--foreground)",
-              }}
-            >
-              Neev Grover
-            </h2>
-            <p
-              style={{
-                fontSize: 15,
-                fontWeight: 400,
-                margin: "0 0 1.5rem 0",
-                color: "var(--accent)",
-              }}
-            >
-              Founder · Rising Junior at the Harker School
-            </p>
-            <p
-              style={{
-                fontSize: 16,
-                margin: 0,
-                lineHeight: 1.8,
-                color: "var(--subtle)",
-              }}
-            >
+          <div className="flex-1 min-w-[240px]">
+            <h2 className="text-3xl font-bold tracking-tight mb-1 mt-0">Neev Grover</h2>
+            <p className="text-lg text-accent mb-4">Founder · Rising Junior at the Harker School</p>
+            <p className="text-base leading-relaxed text-muted">
               Neev is a student inventor passionate about using technology to solve real-world
               environmental problems. He built DuneBroom from the ground up — designing the
               mechanical sieving system, training the ML vision model, and leading school
@@ -97,30 +56,19 @@ export default function AboutPage() {
         </div>
 
         {/* Divider */}
-        <div style={{ borderTop: "1px solid var(--border)", marginBottom: "3.5rem" }} />
+        <div className="border-t border-border mb-10" />
 
         {/* The Mission */}
-        <div style={{ marginBottom: "3.5rem" }}>
-          <h2
-            style={{
-              fontSize: 26,
-              fontWeight: 700,
-              letterSpacing: "-0.02em",
-              marginBottom: "1rem",
-              marginTop: 0,
-              color: "var(--foreground)",
-            }}
-          >
-            The Mission
-          </h2>
-          <p style={{ fontSize: 16, lineHeight: 1.8, color: "var(--subtle)", marginBottom: "1rem" }}>
+        <div className="mb-10">
+          <h2 className="text-2xl font-bold tracking-tight mb-4 mt-0">The Mission</h2>
+          <p className="text-base leading-relaxed text-muted mb-4">
             DuneBroom started with a simple observation: beach cleanups rely entirely on human
             volunteer hours, and yet less than 1% of coastal debris gets removed each year.
             Neev set out to build a robot that could work autonomously — patrolling and
             collecting without intervention — while staying affordable enough to be deployed
             at scale.
           </p>
-          <p style={{ fontSize: 16, lineHeight: 1.8, color: "var(--subtle)", margin: 0 }}>
+          <p className="text-base leading-relaxed text-muted">
             The project grew into something larger: an education and awareness program reaching
             450 students across 5 schools in India, a children&apos;s book, and a drawing
             competition that gave young people a creative voice in the fight for a cleaner planet.
@@ -128,45 +76,21 @@ export default function AboutPage() {
         </div>
 
         {/* Divider */}
-        <div style={{ borderTop: "1px solid var(--border)", marginBottom: "3.5rem" }} />
+        <div className="border-t border-border mb-10" />
 
         {/* Stats row */}
-        <div
-          style={{
-            display: "grid",
-            gridTemplateColumns: "repeat(auto-fit, minmax(160px, 1fr))",
-            gap: "1.25rem",
-          }}
-        >
+        <div className="grid grid-cols-2 md:grid-cols-4 gap-5">
           {[
             { value: "450+", label: "Students reached" },
             { value: "5", label: "Partner schools" },
             { value: "1", label: "Book published" },
             { value: "2+", label: "Years of research" },
           ].map(({ value, label }) => (
-            <div
-              key={label}
-              style={{
-                background: "var(--surface)",
-                borderRadius: 4,
-                padding: "1.25rem",
-                textAlign: "center",
-              }}
-            >
-              <span
-                style={{
-                  display: "block",
-                  fontSize: 34,
-                  fontWeight: 800,
-                  color: "var(--accent)",
-                  letterSpacing: "-0.03em",
-                  lineHeight: 1,
-                  marginBottom: "0.4rem",
-                }}
-              >
+            <div key={label} className="bg-surface p-5 text-center rounded-md border border-border">
+              <span className="block text-3xl font-extrabold text-accent tracking-tighter leading-none mb-1">
                 {value}
               </span>
-              <span style={{ fontSize: 13, color: "var(--muted)" }}>{label}</span>
+              <span className="text-xs text-muted">{label}</span>
             </div>
           ))}
         </div>

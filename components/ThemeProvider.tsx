@@ -1,14 +1,8 @@
 "use client";
 
-import { createContext, useContext, useEffect, useState } from "react";
+import { createContext, useContext, useMemo } from "react";
 
-type Theme = "light" | "dark";
-
-const ThemeContext = createContext<{
-  theme: Theme;
-  toggleTheme: () => void;
-}>({
-  theme: "light",
+const ThemeContext = createContext<{ toggleTheme: () => void }>({
   toggleTheme: () => {},
 });
 
@@ -16,34 +10,32 @@ export function useTheme() {
   return useContext(ThemeContext);
 }
 
-export default function ThemeProvider({ children }: { children: React.ReactNode }) {
-  const [theme, setTheme] = useState<Theme>("light");
-  const [mounted, setMounted] = useState(false);
-
-  useEffect(() => {
-    const stored = localStorage.getItem("theme") as Theme | null;
-    if (stored === "dark") {
-      setTheme("dark");
-      document.documentElement.classList.add("dark");
-    }
-    setMounted(true);
-  }, []);
-
-  function toggleTheme() {
-    const next = theme === "light" ? "dark" : "light";
-    setTheme(next);
-    localStorage.setItem("theme", next);
-    if (next === "dark") {
-      document.documentElement.classList.add("dark");
-    } else {
-      document.documentElement.classList.remove("dark");
-    }
-  }
-
-  // Prevent flash: render children immediately but only expose toggle after mount
-  return (
-    <ThemeContext.Provider value={{ theme: mounted ? theme : "light", toggleTheme }}>
-      {children}
-    </ThemeContext.Provider>
+/*
+ * The current theme lives in one place only: the `dark` class on <html>, which
+ * the inline script in the root layout applies before first paint. Keeping it
+ * out of React state means no mount-time setState, no flash of the wrong
+ * theme, and nothing for the server and client to disagree about during
+ * hydration. Components that need to look different per theme do so in CSS.
+ */
+export default function ThemeProvider({
+  children,
+}: {
+  children: React.ReactNode;
+}) {
+  const value = useMemo(
+    () => ({
+      toggleTheme() {
+        const isDark = document.documentElement.classList.toggle("dark");
+        try {
+          localStorage.setItem("theme", isDark ? "dark" : "light");
+        } catch {
+          // Private browsing or blocked storage: the toggle still works for
+          // this page view, it just won't be remembered.
+        }
+      },
+    }),
+    [],
   );
+
+  return <ThemeContext.Provider value={value}>{children}</ThemeContext.Provider>;
 }

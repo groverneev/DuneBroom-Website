@@ -14,7 +14,7 @@ const navLinks = [
 
 function MoonIcon() {
   return (
-    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+    <svg className="theme-icon-light" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
       <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z" />
     </svg>
   );
@@ -22,7 +22,7 @@ function MoonIcon() {
 
 function SunIcon() {
   return (
-    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+    <svg className="theme-icon-dark" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
       <circle cx="12" cy="12" r="5" />
       <line x1="12" y1="1" x2="12" y2="3" />
       <line x1="12" y1="21" x2="12" y2="23" />
@@ -36,34 +36,15 @@ function SunIcon() {
   );
 }
 
-function ThemeButton({ theme, toggleTheme }: { theme: string; toggleTheme: () => void }) {
+function ThemeButton({ toggleTheme }: { toggleTheme: () => void }) {
   return (
     <button
       onClick={toggleTheme}
-      aria-label="Toggle theme"
-      style={{
-        background: "none",
-        border: "none",
-        borderRadius: 6,
-        width: 34,
-        height: 34,
-        cursor: "pointer",
-        display: "flex",
-        alignItems: "center",
-        justifyContent: "center",
-        color: "var(--muted)",
-        transition: "background-color 0.2s, color 0.2s",
-      }}
-      onMouseEnter={(e) => {
-        e.currentTarget.style.backgroundColor = "var(--surface)";
-        e.currentTarget.style.color = "var(--foreground)";
-      }}
-      onMouseLeave={(e) => {
-        e.currentTarget.style.backgroundColor = "transparent";
-        e.currentTarget.style.color = "var(--muted)";
-      }}
+      aria-label="Toggle dark/light theme"
+      className="rounded-lg w-9 h-9 flex items-center justify-center text-muted hover:bg-surface hover:text-foreground transition-colors focus-visible:ring-2 focus-visible:ring-accent focus-visible:outline-none"
     >
-      {theme === "light" ? <MoonIcon /> : <SunIcon />}
+      <MoonIcon />
+      <SunIcon />
     </button>
   );
 }
@@ -71,192 +52,95 @@ function ThemeButton({ theme, toggleTheme }: { theme: string; toggleTheme: () =>
 export default function Navbar() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const pathname = usePathname();
-  const { theme, toggleTheme } = useTheme();
+  const { toggleTheme } = useTheme();
 
   return (
-    <nav
-      style={{
-        background: "var(--background)",
-        borderBottom: "1px solid var(--border)",
-        position: "sticky",
-        top: 0,
-        zIndex: 50,
-        width: "100%",
-        transition: "background-color 0.3s, border-color 0.3s",
-      }}
-    >
-      <div
-        style={{
-          maxWidth: 1200,
-          margin: "0 auto",
-          padding: "0 1rem",
-        }}
-      >
-        <div
-          style={{
-            display: "flex",
-            alignItems: "center",
-            justifyContent: "space-between",
-            height: 64,
-          }}
+    <nav className="sticky top-0 z-50 w-full bg-background border-b border-border transition-colors duration-300">
+      <div className="max-w-[1200px] mx-auto px-4 flex items-center justify-between h-16">
+        {/* Logo */}
+        <Link
+          href="/"
+          className="font-bold text-xl text-foreground no-underline hover:text-foreground focus-visible:ring-2 focus-visible:ring-accent focus-visible:outline-none rounded px-2 py-1"
         >
-          {/* Logo */}
-          <Link
-            href="/"
-            style={{
-              fontWeight: 700,
-              fontSize: 20,
-              color: "var(--foreground)",
-              textDecoration: "none",
-            }}
-          >
-            DuneBroom
-          </Link>
+          DuneBroom
+        </Link>
 
-          {/* Desktop links + theme toggle */}
-          <div
-            className="navbar-desktop"
-            style={{ display: "flex", alignItems: "center", gap: 24 }}
-          >
-            <ul
-              style={{
-                listStyle: "none",
-                display: "flex",
-                gap: 28,
-                margin: 0,
-                padding: 0,
-                alignItems: "center",
-              }}
-            >
-              {navLinks.map((link) => {
-                const isActive = pathname === link.href;
-                return (
-                  <li key={link.href}>
-                    <Link
-                      href={link.href}
-                      className={isActive ? "nav-link active" : "nav-link"}
-                      style={{
-                        color: isActive ? "var(--foreground)" : "var(--muted)",
-                        textDecoration: "none",
-                        fontWeight: isActive ? 500 : 400,
-                        fontSize: 15,
-                        transition: "color 0.2s",
-                        paddingBottom: 6,
-                      }}
-                    >
-                      {link.label}
-                    </Link>
-                  </li>
-                );
-              })}
-            </ul>
+        {/* Desktop links + theme toggle */}
+        <div className="hidden md:flex items-center gap-6">
+          <ul className="flex gap-7 list-none p-0 items-center">
+            {navLinks.map((link) => {
+              const isActive = pathname === link.href;
+              return (
+                <li key={link.href}>
+                  <Link
+                    href={link.href}
+                    className={`no-underline transition-colors relative py-[6px] font-medium text-sm ${
+                      isActive ? "text-foreground" : "text-muted hover:text-foreground"
+                    }`}
+                    aria-current={isActive ? "page" : undefined}
+                  >
+                    {link.label}
+                    <span className={`absolute bottom-0 left-0 h-0.5 bg-accent transition-all ${
+                      isActive ? "w-full" : "w-0"
+                    }`}></span>
+                  </Link>
+                </li>
+              );
+            })}
+          </ul>
 
-            <ThemeButton theme={theme} toggleTheme={toggleTheme} />
-          </div>
-
-          {/* Mobile: theme toggle + hamburger */}
-          <div
-            className="navbar-mobile-buttons"
-            style={{
-              display: "none",
-              alignItems: "center",
-              gap: 8,
-            }}
-          >
-            <ThemeButton theme={theme} toggleTheme={toggleTheme} />
-
-            <button
-              onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-              aria-label="Toggle menu"
-              style={{
-                padding: 8,
-                borderRadius: 6,
-                background: "none",
-                border: "none",
-                color: "var(--foreground)",
-                cursor: "pointer",
-                display: "flex",
-                alignItems: "center",
-                justifyContent: "center",
-              }}
-            >
-              {mobileMenuOpen ? (
-                <svg width="24" height="24" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
-                </svg>
-              ) : (
-                <svg width="24" height="24" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 6h16M4 12h16M4 18h16" />
-                </svg>
-              )}
-            </button>
-          </div>
+          <ThemeButton toggleTheme={toggleTheme} />
         </div>
 
-        {/* Mobile dropdown menu */}
-        {mobileMenuOpen && (
-          <div
-            className="navbar-mobile-menu"
-            style={{
-              borderTop: "1px solid var(--border)",
-              paddingTop: 16,
-              paddingBottom: 16,
-              display: "none",
-            }}
+        {/* Mobile: theme toggle + hamburger */}
+        <div className="md:hidden flex items-center gap-2">
+          <ThemeButton toggleTheme={toggleTheme} />
+
+          <button
+            onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
+            aria-label={mobileMenuOpen ? "Close menu" : "Toggle menu"}
+            className="p-2 rounded-lg hover:bg-surface text-foreground focus-visible:ring-2 focus-visible:ring-accent focus-visible:outline-none"
           >
-            <nav style={{ display: "flex", flexDirection: "column", gap: 4 }}>
-              {navLinks.map((link) => {
-                const isActive = pathname === link.href;
-                return (
+            {mobileMenuOpen ? (
+              <svg width="24" height="24" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
+              </svg>
+            ) : (
+              <svg width="24" height="24" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 6h16M4 12h16M4 18h16" />
+              </svg>
+            )}
+          </button>
+        </div>
+      </div>
+
+      {/* Mobile dropdown menu */}
+      {mobileMenuOpen && (
+        <div className="border-t border-border md:hidden">
+          <ul className="max-w-[1200px] mx-auto list-none flex flex-col gap-1 px-4 py-4 m-0">
+            {navLinks.map((link) => {
+              const isActive = pathname === link.href;
+              return (
+                <li key={link.href}>
                   <Link
-                    key={link.href}
                     href={link.href}
                     onClick={() => setMobileMenuOpen(false)}
-                    style={{
-                      color: isActive ? "var(--foreground)" : "var(--muted)",
-                      textDecoration: "none",
-                      fontWeight: isActive ? 500 : 400,
-                      fontSize: 15,
-                      padding: "8px 8px",
-                      borderRadius: 6,
-                      transition: "background-color 0.2s, color 0.2s",
-                    }}
-                    onMouseEnter={(e) =>
-                      (e.currentTarget.style.backgroundColor = "var(--surface)")
-                    }
-                    onMouseLeave={(e) =>
-                      (e.currentTarget.style.backgroundColor = "transparent")
-                    }
+                    className={`block py-2 px-3 rounded-lg no-underline transition-colors font-medium text-sm ${
+                      isActive
+                        ? "text-foreground bg-surface"
+                        : "text-muted hover:bg-surface hover:text-foreground"
+                    }`}
+                    aria-current={isActive ? "page" : undefined}
                   >
                     {link.label}
                   </Link>
-                );
-              })}
-            </nav>
-          </div>
-        )}
-      </div>
+                </li>
+              );
+            })}
+          </ul>
+        </div>
+      )}
 
-      <style>{`
-        @media (max-width: 768px) {
-          .navbar-desktop { display: none !important; }
-          .navbar-mobile-buttons { display: flex !important; }
-          .navbar-mobile-menu { display: block !important; }
-        }
-        .nav-link { position: relative; display: inline-block; }
-        .nav-link::after {
-          content: '';
-          position: absolute;
-          bottom: -2px;
-          left: 0;
-          width: 0;
-          height: 2px;
-          background: var(--accent);
-          transition: width 0.25s ease;
-        }
-        .nav-link:hover::after,
-        .nav-link.active::after { width: 100%; }
-      `}</style>
     </nav>
   );
 }

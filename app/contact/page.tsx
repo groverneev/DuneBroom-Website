@@ -58,11 +58,7 @@ export default function ContactPage() {
       label: "GitHub",
       icon: (
         <svg width="20" height="20" fill="currentColor" viewBox="0 0 24 24">
-          <path
-            fillRule="evenodd"
-            d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.531 1.032 1.531 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.522 2 12 2z"
-            clipRule="evenodd"
-          />
+          <path fillRule="evenodd" d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.531 1.032 1.531 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.522 2 12 2z" />
         </svg>
       ),
     },
@@ -70,7 +66,7 @@ export default function ContactPage() {
       href: "https://techunpacked.substack.com",
       label: "Blog",
       icon: (
-        <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
+        <svg width="20" height="20" fill="currentColor" viewBox="0 0 24 24">
           <path d="M22.539 8.242H1.46V5.406h21.08v2.836zM1.46 10.812V24L12 18.11 22.54 24V10.812H1.46zM22.54 0H1.46v2.836h21.08V0z" />
         </svg>
       ),
@@ -79,73 +75,39 @@ export default function ContactPage() {
       href: "https://neevgrover.com",
       label: "Website",
       icon: (
-        <svg
-          width="20"
-          height="20"
-          fill="none"
-          stroke="currentColor"
-          viewBox="0 0 24 24"
-        >
-          <path
-            strokeLinecap="round"
-            strokeLinejoin="round"
-            strokeWidth={2}
-            d="M21 12a9 9 0 01-9 9m9-9a9 9 0 00-9-9m9 9H3m9 9a9 9 0 01-9-9m9 9c1.657 0 3-4.03 3-9s-1.343-9-3-9m0 18c-1.657 0-3-4.03-3-9s1.343-9 3-9m-9 9a9 9 0 019-9"
-          />
+        <svg width="20" height="20" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M21 12a9 9 0 01-9 9m9-9a9 9 0 00-9-9m9 9H3m9 9a9 9 0 01-9-9m9 9c1.657 0 3-4.03 3-9s-1.343-9-3-9m0 18c-1.657 0-3-4.03-3-9s1.343-9 3-9m-9 9a9 9 0 019-9" />
         </svg>
       ),
     },
   ];
 
   return (
-    <div style={{ minHeight: "100vh", background: "var(--background)", transition: "background-color 0.3s" }}>
+    <main id="main-content" className="bg-background transition-colors duration-300">
       {/* Hero Section */}
-      <div
-        style={{
-          padding: "4rem 1rem",
-          textAlign: "center",
-        }}
-      >
-        <h1 style={{ fontSize: "clamp(2rem, 5vw, 3rem)", fontWeight: 700, marginBottom: 12, color: "var(--foreground)" }}>Contact</h1>
-        <p style={{ color: "var(--muted)", fontSize: 18, maxWidth: 640, margin: "0 auto" }}>
+      <section className="py-12 text-center px-8">
+        <h1 className="text-3xl md:text-5xl font-bold mb-3">Contact</h1>
+        <p className="text-lg text-muted max-w-xl mx-auto">
           Have any questions or suggestions? Get in touch!
         </p>
-      </div>
+      </section>
 
       {/* Content */}
-      <div style={{ maxWidth: 900, margin: "0 auto", padding: "3rem 1rem" }}>
-        <div className="contact-grid" style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: "2rem" }}>
+      <section className="pb-24 px-8">
+        <div className="max-w-[900px] mx-auto grid md:grid-cols-2 gap-10">
           {/* Contact Form */}
-          <div
-            style={{
-              background: "var(--surface)",
-              border: "1px solid var(--border)",
-              borderRadius: 4,
-              padding: "2rem",
-              transition: "background-color 0.3s, border-color 0.3s",
-            }}
-          >
-            <h2 style={{ fontSize: 24, fontWeight: 700, color: "var(--foreground)", marginBottom: 24 }}>
-              Send a Message
-            </h2>
+          <div className="bg-surface border border-border rounded-lg p-8">
+            <h2 className="text-2xl font-bold mb-6">Send a Message</h2>
 
             {status === "success" ? (
-              <div
-                style={{
-                  background: "var(--card-bg)",
-                  border: "1px solid var(--border)",
-                  borderRadius: 4,
-                  padding: "1.5rem 1rem",
-                  textAlign: "center",
-                }}
-              >
+              <div className="bg-card-bg border border-border rounded-md p-6 text-center">
                 <svg
                   width="48"
                   height="48"
                   fill="none"
                   stroke="var(--accent)"
                   viewBox="0 0 24 24"
-                  style={{ margin: "0 auto 12px auto", display: "block" }}
+                  className="mx-auto mb-3 block"
                 >
                   <path
                     strokeLinecap="round"
@@ -154,75 +116,69 @@ export default function ContactPage() {
                     d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"
                   />
                 </svg>
-                <p style={{ fontWeight: 600, marginBottom: 4, color: "var(--foreground)" }}>Message sent!</p>
-                <p style={{ fontSize: 14, color: "var(--muted)" }}>
+                <p className="font-semibold mb-2">Message sent!</p>
+                <p className="text-sm text-muted">
                   Thank you for reaching out. I&apos;ll get back to you soon.
                 </p>
                 <button
                   onClick={() => setStatus("idle")}
-                  style={{
-                    marginTop: 16,
-                    background: "none",
-                    border: "none",
-                    color: "var(--accent)",
-                    textDecoration: "underline",
-                    fontSize: 14,
-                    cursor: "pointer",
-                  }}
+                  className="mt-4 text-accent underline text-sm hover:text-accent/80"
                 >
                   Send another message
                 </button>
               </div>
             ) : (
-              <form onSubmit={handleSubmit} style={{ display: "flex", flexDirection: "column", gap: 16 }}>
+              <form onSubmit={handleSubmit} className="flex flex-col gap-5">
                 <div>
-                  <label style={{ display: "block", fontSize: 14, fontWeight: 500, color: "var(--subtle)", marginBottom: 4 }}>
+                  <label htmlFor="name" className="block text-sm font-medium text-subtle mb-1">
                     Name
                   </label>
                   <input
+                    id="name"
                     type="text"
                     name="name"
                     value={formData.name}
                     onChange={handleChange}
                     required
                     placeholder="Your name"
-                    className="form-input"
+                    className="form-input w-full"
                   />
                 </div>
 
                 <div>
-                  <label style={{ display: "block", fontSize: 14, fontWeight: 500, color: "var(--subtle)", marginBottom: 4 }}>
+                  <label htmlFor="email" className="block text-sm font-medium text-subtle mb-1">
                     Email
                   </label>
                   <input
+                    id="email"
                     type="email"
                     name="email"
                     value={formData.email}
                     onChange={handleChange}
                     required
                     placeholder="Your email"
-                    className="form-input"
+                    className="form-input w-full"
                   />
                 </div>
 
                 <div>
-                  <label style={{ display: "block", fontSize: 14, fontWeight: 500, color: "var(--subtle)", marginBottom: 4 }}>
+                  <label htmlFor="message" className="block text-sm font-medium text-subtle mb-1">
                     Message
                   </label>
                   <textarea
+                    id="message"
                     name="message"
                     value={formData.message}
                     onChange={handleChange}
                     required
                     rows={5}
                     placeholder="Your message..."
-                    className="form-input"
-                    style={{ resize: "vertical" }}
+                    className="form-input w-full resize-y"
                   />
                 </div>
 
                 {status === "error" && (
-                  <div style={{ background: "#fef2f2", border: "1px solid #fecaca", color: "#dc2626", padding: "12px 16px", borderRadius: 4, fontSize: 14 }}>
+                  <div className="bg-red-50 border border-red-200 text-red-700 dark:bg-red-950 dark:border-red-900 dark:text-red-300 px-4 py-3 rounded-md text-sm">
                     Something went wrong. Please try again or email directly.
                   </div>
                 )}
@@ -230,27 +186,12 @@ export default function ContactPage() {
                 <button
                   type="submit"
                   disabled={status === "loading"}
-                  style={{
-                    width: "100%",
-                    background: "var(--accent)",
-                    color: "#fff",
-                    fontWeight: 600,
-                    fontSize: 16,
-                    padding: "12px 16px",
-                    borderRadius: 4,
-                    border: "none",
-                    cursor: status === "loading" ? "not-allowed" : "pointer",
-                    opacity: status === "loading" ? 0.7 : 1,
-                    transition: "opacity 0.2s",
-                    display: "flex",
-                    alignItems: "center",
-                    justifyContent: "center",
-                    gap: 8,
-                  }}
+                  className="w-full bg-accent text-white font-semibold rounded-md py-3 px-6 border-none cursor-pointer transition-opacity hover:opacity-90 flex items-center justify-center gap-3 disabled:opacity-70 disabled:cursor-not-allowed"
                 >
                   {status === "loading" && (
-                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="3" style={{ animation: "spin 1s linear infinite" }}>
-                      <path d="M21 12a9 9 0 1 1-6.219-8.56" />
+                    <svg className="animate-spin" width="18" height="18" viewBox="0 0 24 24" fill="none">
+                      <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4" />
+                      <path d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z" />
                     </svg>
                   )}
                   {status === "loading" ? "Sending..." : "Send Message"}
@@ -260,27 +201,17 @@ export default function ContactPage() {
           </div>
 
           {/* Contact Info */}
-          <div style={{ display: "flex", flexDirection: "column", gap: "1.5rem" }}>
-            <div
-              style={{
-                background: "var(--surface)",
-                border: "1px solid var(--border)",
-                borderRadius: 4,
-                padding: "2rem",
-                transition: "background-color 0.3s, border-color 0.3s",
-              }}
-            >
-              <h2 style={{ fontSize: 24, fontWeight: 700, color: "var(--foreground)", marginBottom: 16 }}>
-                Other Ways to Reach Me
-              </h2>
-              <div style={{ display: "flex", alignItems: "flex-start", gap: 12 }}>
+          <div className="flex flex-col gap-7">
+            <div className="bg-surface border border-border rounded-lg p-8">
+              <h2 className="text-xl font-bold mb-4">Other Ways to Reach Me</h2>
+              <div className="flex items-start gap-3">
                 <svg
-                  width="20"
-                  height="20"
+                  width="18"
+                  height="18"
                   fill="none"
                   stroke="var(--muted)"
                   viewBox="0 0 24 24"
-                  style={{ marginTop: 2, flexShrink: 0 }}
+                  className="mt-1 shrink-0"
                 >
                   <path
                     strokeLinecap="round"
@@ -290,25 +221,15 @@ export default function ContactPage() {
                   />
                 </svg>
                 <div>
-                  <p style={{ fontWeight: 500, color: "var(--foreground)", margin: 0 }}>Email</p>
-                  <p style={{ color: "var(--muted)", margin: "4px 0 0 0" }}>groverneev at gmail dot com</p>
+                  <p className="font-medium">Email</p>
+                  <p className="text-sm text-muted">groverneev at gmail dot com</p>
                 </div>
               </div>
             </div>
 
-            <div
-              style={{
-                background: "var(--surface)",
-                border: "1px solid var(--border)",
-                borderRadius: 4,
-                padding: "2rem",
-                transition: "background-color 0.3s, border-color 0.3s",
-              }}
-            >
-              <h2 style={{ fontSize: 20, fontWeight: 700, color: "var(--foreground)", marginBottom: 16 }}>
-                Connect on Social
-              </h2>
-              <div style={{ display: "flex", gap: 12 }}>
+            <div className="bg-surface border border-border rounded-lg p-8">
+              <h2 className="text-xl font-bold mb-4">Connect on Social</h2>
+              <div className="flex gap-3">
                 {socialLinks.map((link) => (
                   <a
                     key={link.href}
@@ -316,19 +237,7 @@ export default function ContactPage() {
                     target="_blank"
                     rel="noopener noreferrer"
                     aria-label={link.label}
-                    style={{
-                      width: 48,
-                      height: 48,
-                      borderRadius: 6,
-                      border: "1px solid var(--border)",
-                      background: "var(--card-bg)",
-                      display: "flex",
-                      alignItems: "center",
-                      justifyContent: "center",
-                      color: "var(--foreground)",
-                      textDecoration: "none",
-                      transition: "border-color 0.2s, background-color 0.3s",
-                    }}
+                    className="w-12 h-12 rounded-md border border-border bg-card-bg flex items-center justify-center hover:border-muted transition-colors focus-visible:ring-2 focus-visible:ring-accent focus-visible:outline-none"
                   >
                     {link.icon}
                   </a>
@@ -337,18 +246,18 @@ export default function ContactPage() {
             </div>
           </div>
         </div>
-      </div>
+      </section>
 
       <style>{`
         @keyframes spin {
           to { transform: rotate(360deg); }
         }
-        @media (max-width: 700px) {
-          .contact-grid {
+        @media (max-width: 768px) {
+          .md\\:grid-cols-2 {
             grid-template-columns: 1fr !important;
           }
         }
       `}</style>
-    </div>
+    </main>
   );
 }
