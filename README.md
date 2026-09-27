@@ -18,35 +18,38 @@ DuneBroom is a youth-driven robotics project dedicated to combating beach pollut
 
 ## Tech Stack
 
-- **Next.js 16** (App Router, Turbopack)
+- **Next.js 16** (App Router, Turbopack) + **React 19**
 - **TypeScript**
-- **Tailwind CSS v4** + inline styles with CSS variables
+- **Tailwind CSS v4**, themed with CSS variables (light and dark mode)
 - **Formspree** for contact form submissions
 
 ## Website Structure
 
 ```
 app/
-├── layout.tsx                       # Root layout (Navbar, Footer, ThemeProvider)
-├── globals.css                      # CSS variables, Tailwind, custom classes
-├── page.tsx                         # Homepage (hero, overview, nav cards)
+├── layout.tsx                       # Root layout (metadata, Navbar, Footer, theme)
+├── globals.css                      # Theme variables, Tailwind setup, shared classes
+├── page.tsx                         # Homepage
+├── outreach/page.tsx                # Outreach & Impact
 ├── system-logic/page.tsx            # System Logic
 ├── technical-architecture/page.tsx  # Technical Architecture
-├── about_us/page.tsx                # About Us
-├── contact/page.tsx                 # Contact form + social links
+├── about_me/page.tsx                # About Me
+├── contact/                         # Contact form + social links
+└── not-found.tsx                    # 404 page
 components/
 ├── Navbar.tsx                       # Sticky navbar + mobile drawer
 ├── Footer.tsx                       # Site footer
-├── ThemeProvider.tsx                 # Dark/light theme context
-public/                              # Static assets (images, icons)
+└── ThemeProvider.tsx                # Light/dark theme toggle
+public/                              # Images, robots.txt, sitemap.xml
 ```
 
 ## Pages
 
 | Route | Description |
 |-------|-------------|
-| `/` | Homepage — hero section, project overview, explore cards |
+| `/` | Homepage — hero, project overview, recognition |
+| `/outreach` | School outreach, environmental education, and news coverage |
 | `/system-logic` | How DuneBroom detects, navigates, and collects debris |
 | `/technical-architecture` | Hardware design, sensors, and software stack |
-| `/about_us` | The team behind DuneBroom |
+| `/about_me` | About the creator of DuneBroom |
 | `/contact` | Contact form and social links |
