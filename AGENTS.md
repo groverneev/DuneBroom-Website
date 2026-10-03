@@ -9,12 +9,6 @@ Next.js site for DuneBroom, an autonomous beach-cleaning robot. Live at [dunebro
 - Contact form posts to Formspree (`https://formspree.io/f/xnnvbrzq`)
 - ESLint 9 flat config (`eslint.config.mjs`)
 
-## Commands
-- `npm run dev` — dev server
-- `npm run build` — production build
-- `npm run start` — serve the production build
-- `npm run lint` — ESLint
-
 ## Structure
 ```
 app/
