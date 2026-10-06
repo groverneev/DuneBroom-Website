@@ -72,3 +72,7 @@ Full-width images also need `style={{ width: "100%", height: "auto" }}` and a `s
 ## Keeping docs current
 When you change routes, file structure, the stack or these conventions, update this file, and
 `README.md` if the change is visible to readers of the repo.
+
+## Commits
+Don't add AI co-author trailers (e.g. `Co-Authored-By: Claude ...`) or "Generated with" lines to
+commit messages or PR descriptions.
