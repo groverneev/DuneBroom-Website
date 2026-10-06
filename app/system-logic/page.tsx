@@ -83,13 +83,13 @@ export default function SystemLogicPage() {
           </p>
           <div className="flex flex-col gap-4">
             <div className="rounded-lg p-5 border-l-4 border-accent bg-surface">
-              <h4 className="text-sm font-semibold text-foreground mb-1 mt-0">Visual Capture</h4>
+              <h3 className="text-sm font-semibold text-foreground mb-1 mt-0">Visual Capture</h3>
               <p className="text-xs text-muted mb-0">
                 The robot stops moving and captures a picture of the obstacle in front of it.
               </p>
             </div>
             <div className="rounded-lg p-5 border-l-4 border-accent bg-surface">
-              <h4 className="text-sm font-semibold text-foreground mb-1 mt-0">Classification</h4>
+              <h3 className="text-sm font-semibold text-foreground mb-1 mt-0">Classification</h3>
               <p className="text-xs text-muted mb-0">
                 A Machine Learning (ML) Model running on the robot analyzes the image to classify
                 the object as either &quot;Trash&quot; (e.g., plastic bottles, wrappers) or
@@ -110,7 +110,7 @@ export default function SystemLogicPage() {
           </p>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
             <div className="bg-surface p-6 rounded-lg border-t-2 border-accent border-l border-border">
-              <h4 className="text-sm font-semibold text-foreground mb-2 mt-0">Collection (Trash Detected)</h4>
+              <h3 className="text-sm font-semibold text-foreground mb-2 mt-0">Collection (Trash Detected)</h3>
               <p className="text-xs text-muted mb-0 leading-relaxed">
                 If the object is classified as trash, the collection mechanism is lowered to scoop
                 the item. As the robot resumes movement, a filtration system sifts out sand through
@@ -118,7 +118,7 @@ export default function SystemLogicPage() {
               </p>
             </div>
             <div className="bg-surface p-6 rounded-lg border-t-2 border-border">
-              <h4 className="text-sm font-semibold text-foreground mb-2 mt-0">Preservation (Nature Detected)</h4>
+              <h3 className="text-sm font-semibold text-foreground mb-2 mt-0">Preservation (Nature Detected)</h3>
               <p className="text-xs text-muted mb-0 leading-relaxed">
                 If the object is classified as nature, the scooper remains raised, and the robot
                 executes a navigation maneuver to go around the element, ensuring the ecosystem

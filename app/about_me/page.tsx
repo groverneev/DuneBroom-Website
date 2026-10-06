@@ -44,7 +44,7 @@ export default function AboutPage() {
           />
           <div className="flex-1 min-w-[240px]">
             <h2 className="text-3xl font-bold tracking-tight mb-1 mt-0">Neev Grover</h2>
-            <p className="text-lg text-accent mb-4">Founder · Rising Junior at the Harker School</p>
+            <p className="text-lg text-accent mb-4">Founder · Junior at the Harker School</p>
             <p className="text-base leading-relaxed text-muted">
               Neev is a student inventor passionate about using technology to solve real-world
               environmental problems. He built DuneBroom from the ground up — designing the
@@ -70,7 +70,7 @@ export default function AboutPage() {
           </p>
           <p className="text-base leading-relaxed text-muted">
             The project grew into something larger: an education and awareness program reaching
-            450 students across 5 schools in India, a children&apos;s book, and a drawing
+            450+ students across 5 schools in India, a children&apos;s book, and a drawing
             competition that gave young people a creative voice in the fight for a cleaner planet.
           </p>
         </div>

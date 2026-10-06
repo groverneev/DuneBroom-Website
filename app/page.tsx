@@ -7,7 +7,7 @@ export default function Home() {
       {/* HERO SECTION */}
       <section className="hero-section">
         <h1 className="hero-title">DuneBroom</h1>
-        <h2 className="hero-subtitle">Autonomous beach cleaning powered by machine learning</h2>
+        <p className="hero-subtitle">Autonomous beach cleaning powered by machine learning</p>
 
         <p className="hero-description">
           DuneBroom is a low-cost autonomous beach-cleaning robot that combines

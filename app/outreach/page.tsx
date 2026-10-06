@@ -5,12 +5,12 @@ import Link from "next/link";
 export const metadata: Metadata = {
   title: "Outreach & Impact",
   description:
-    "DuneBroom's grassroots education program: environmental literacy workshops reaching 450 students across 5 schools in India, a children's book, and news coverage.",
+    "DuneBroom's grassroots education program: environmental literacy workshops reaching 450+ students across 5 schools in India, a children's book, and news coverage.",
   alternates: { canonical: "/outreach" },
   openGraph: {
     title: "Outreach & Impact | DuneBroom",
     description:
-      "DuneBroom's grassroots education program: environmental literacy workshops reaching 450 students across 5 schools in India, a children's book, and news coverage.",
+      "DuneBroom's grassroots education program: environmental literacy workshops reaching 450+ students across 5 schools in India, a children's book, and news coverage.",
     url: "/outreach",
     images: [
       {
@@ -41,7 +41,7 @@ export default function OutreachPage() {
         {/* Stats */}
         <div className="flex gap-6 flex-wrap mb-10">
           <div className="bg-surface rounded-md p-4 text-center border border-border min-w-[140px]">
-            <span className="text-4xl font-extrabold text-accent leading-none tracking-tighter block mb-1">450</span>
+            <span className="text-4xl font-extrabold text-accent leading-none tracking-tighter block mb-1">450+</span>
             <span className="text-sm text-muted">students reached</span>
           </div>
           <div className="bg-surface rounded-md p-4 text-center border border-border min-w-[140px]">

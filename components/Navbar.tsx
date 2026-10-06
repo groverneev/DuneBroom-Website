@@ -98,7 +98,9 @@ export default function Navbar() {
 
           <button
             onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-            aria-label={mobileMenuOpen ? "Close menu" : "Toggle menu"}
+            aria-label={mobileMenuOpen ? "Close menu" : "Open menu"}
+            aria-expanded={mobileMenuOpen}
+            aria-controls="mobile-menu"
             className="p-2 rounded-lg hover:bg-surface text-foreground focus-visible:ring-2 focus-visible:ring-accent focus-visible:outline-none"
           >
             {mobileMenuOpen ? (
@@ -116,7 +118,7 @@ export default function Navbar() {
 
       {/* Mobile dropdown menu */}
       {mobileMenuOpen && (
-        <div className="border-t border-border md:hidden">
+        <div id="mobile-menu" className="border-t border-border md:hidden">
           <ul className="max-w-[1200px] mx-auto list-none flex flex-col gap-1 px-4 py-4 m-0">
             {navLinks.map((link) => {
               const isActive = pathname === link.href;

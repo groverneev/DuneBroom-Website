@@ -69,7 +69,7 @@ export default function TechnicalArchitecturePage() {
           </p>
           <div className="flex flex-col gap-4">
             <div className="rounded-lg p-5 border-l-4 border-accent bg-surface">
-              <h4 className="text-sm font-semibold text-foreground mb-1 mt-0">Raspberry Pi 5</h4>
+              <h3 className="text-sm font-semibold text-foreground mb-1 mt-0">Raspberry Pi 5</h3>
               <p className="text-xs text-muted mb-0 leading-relaxed">
                 Serves as the robot&apos;s primary computer. Executes the YOLOv8 ML model to classify
                 objects as &quot;trash&quot; or &quot;nature&quot;. Makes high-level navigation
@@ -77,7 +77,7 @@ export default function TechnicalArchitecturePage() {
               </p>
             </div>
             <div className="rounded-lg p-5 border-l-4 border-accent bg-surface">
-              <h4 className="text-sm font-semibold text-foreground mb-1 mt-0">Webcam</h4>
+              <h3 className="text-sm font-semibold text-foreground mb-1 mt-0">Webcam</h3>
               <p className="text-xs text-muted mb-0 leading-relaxed">
                 Connected directly to the Raspberry Pi. Captures a high-resolution image only when
                 triggered, providing the visual data necessary for the ML model to differentiate
@@ -95,7 +95,7 @@ export default function TechnicalArchitecturePage() {
           </p>
           <div className="flex flex-col gap-4">
             <div className="rounded-lg p-5 border-l-4 border-accent bg-surface">
-              <h4 className="text-sm font-semibold text-foreground mb-1 mt-0">Arduino Microcontroller</h4>
+              <h3 className="text-sm font-semibold text-foreground mb-1 mt-0">Arduino Microcontroller</h3>
               <p className="text-xs text-muted mb-0 leading-relaxed">
                 Acts as the hardware interface. Manages real-time input/output by reading data from
                 the ultrasonic distance sensors and sending signals to the motor control module and
@@ -103,7 +103,7 @@ export default function TechnicalArchitecturePage() {
               </p>
             </div>
             <div className="rounded-lg p-5 border-l-4 border-accent bg-surface">
-              <h4 className="text-sm font-semibold text-foreground mb-1 mt-0">Distance Sensors</h4>
+              <h3 className="text-sm font-semibold text-foreground mb-1 mt-0">Distance Sensors</h3>
               <p className="text-xs text-muted mb-0 leading-relaxed">
                 Ultrasonic sensors connected to the Arduino continuously monitor the path for
                 obstacles within a 3-inch range. These sensors serve as the hardware
@@ -111,7 +111,7 @@ export default function TechnicalArchitecturePage() {
               </p>
             </div>
             <div className="rounded-lg p-5 border-l-4 border-accent bg-surface">
-              <h4 className="text-sm font-semibold text-foreground mb-1 mt-0">Motor Control Module</h4>
+              <h3 className="text-sm font-semibold text-foreground mb-1 mt-0">Motor Control Module</h3>
               <p className="text-xs text-muted mb-0 leading-relaxed">
                 An intermediate driver that interprets signals from the Arduino and uses power from
                 the battery to control the motors.
@@ -129,7 +129,7 @@ export default function TechnicalArchitecturePage() {
           </p>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
             <div className="bg-surface p-6 rounded-lg border-t-2 border-accent border-l border-border">
-              <h4 className="text-sm font-semibold text-foreground mb-2 mt-0">Drivetrain Motors</h4>
+              <h3 className="text-sm font-semibold text-foreground mb-2 mt-0">Drivetrain Motors</h3>
               <p className="text-xs text-muted mb-0 leading-relaxed">
                 High-torque DC motors operating between 200-300 RPM. These motors drive a tank-tread
                 chassis designed to maintain traction on soft sand while achieving a speed of
@@ -137,7 +137,7 @@ export default function TechnicalArchitecturePage() {
               </p>
             </div>
             <div className="bg-surface p-6 rounded-lg border-t-2 border-accent border-l border-border">
-              <h4 className="text-sm font-semibold text-foreground mb-2 mt-0">Servo Motor (Scooper Lift)</h4>
+              <h3 className="text-sm font-semibold text-foreground mb-2 mt-0">Servo Motor (Scooper Lift)</h3>
               <p className="text-xs text-muted mb-0 leading-relaxed">
                 Controls the vertical articulation of the custom 3D-printed scooper. Lowers the
                 mechanism to collect identified trash and raises it to avoid drag or navigate over

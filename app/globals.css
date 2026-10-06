@@ -9,23 +9,27 @@
 :root {
   --background: #f8f7f4;
   --foreground: #1a1a1a;
-  --muted: #737373;
+  --muted: #666666;
   --subtle: #404040;
   --border: #e4e2dc;
   --surface: #f0ede8;
   --accent: #0f766e;
+  --on-accent: #ffffff;
   --card-bg: #faf9f7;
+  color-scheme: light;
 }
 
 html.dark {
   --background: #111110;
   --foreground: #f0eeea;
-  --muted: #737373;
+  --muted: #8f8f8f;
   --subtle: #a8a29e;
   --border: #252422;
   --surface: #1c1b19;
   --accent: #14b8a6;
+  --on-accent: #111110;
   --card-bg: #222220;
+  color-scheme: dark;
 }
 
 /*
@@ -44,6 +48,7 @@ html.dark {
   --color-border: var(--border);
   --color-surface: var(--surface);
   --color-accent: var(--accent);
+  --color-on-accent: var(--on-accent);
   --color-card-bg: var(--card-bg);
 
   --font-sans: var(--font-inter), system-ui, -apple-system, BlinkMacSystemFont,
@@ -99,7 +104,7 @@ body {
 /* Buttons */
 .btn-primary {
   background: var(--accent);
-  color: #fff;
+  color: var(--on-accent);
   font-weight: 600;
   font-size: 15px;
   border-radius: 4px;
@@ -165,6 +170,15 @@ body {
 .hero-image:hover {
   transform: translateY(-4px);
   box-shadow: 0 20px 50px rgba(0, 0, 0, 0.15);
+}
+
+/* Respect the OS "reduce motion" setting */
+@media (prefers-reduced-motion: reduce) {
+  .hero-image,
+  .hero-image:hover {
+    transform: none;
+    transition: none;
+  }
 }
 
 /* Overview section */
