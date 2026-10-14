@@ -29,7 +29,6 @@ export default function SystemLogicPage() {
         <h1 className="text-5xl font-extrabold tracking-tight mb-2 mt-0">System Logic</h1>
         <p className="text-lg text-muted mb-10 mt-0">Process Overview</p>
 
-        {/* Figure */}
         <div className="mb-8 rounded-md overflow-hidden bg-surface p-4 border border-border">
           <Image
             src="/Figure_3_Collection_Sequence.png"
@@ -44,7 +43,6 @@ export default function SystemLogicPage() {
           </p>
         </div>
 
-        {/* Introduction */}
         <div className="pb-8 mb-8 border-b border-border">
           <p className="text-base leading-relaxed text-muted mb-0">
             To achieve autonomous beach cleaning, the robot operates on a continuous decision-making
@@ -54,7 +52,6 @@ export default function SystemLogicPage() {
           </p>
         </div>
 
-        {/* Step 1 */}
         <div className="pb-8 mb-8 border-b border-border">
           <div className="flex items-center gap-3 mb-2">
             <span className="font-bold text-sm text-accent min-w-[40px]">01</span>
@@ -70,7 +67,6 @@ export default function SystemLogicPage() {
           </p>
         </div>
 
-        {/* Step 2 */}
         <div className="pb-8 mb-8 border-b border-border">
           <div className="flex items-center gap-3 mb-2">
             <span className="font-bold text-sm text-accent min-w-[40px]">02</span>
@@ -99,7 +95,6 @@ export default function SystemLogicPage() {
           </div>
         </div>
 
-        {/* Step 3 */}
         <div>
           <div className="flex items-center gap-3 mb-2">
             <span className="font-bold text-sm text-accent min-w-[40px]">03</span>

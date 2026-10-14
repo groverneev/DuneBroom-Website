@@ -38,7 +38,6 @@ export default function OutreachPage() {
           to empower the next generation of eco-innovators.
         </p>
 
-        {/* Stats */}
         <div className="flex gap-6 flex-wrap mb-10">
           <div className="bg-surface rounded-md p-4 text-center border border-border min-w-[140px]">
             <span className="text-4xl font-extrabold text-accent leading-none tracking-tighter block mb-1">450+</span>
@@ -50,7 +49,6 @@ export default function OutreachPage() {
           </div>
         </div>
 
-        {/* SECTION 1 — GRASSROOTS EDUCATION */}
         <div className="pb-10 mb-10 border-b border-border">
           <p className="text-sm font-semibold text-accent uppercase tracking-wide mb-2 mt-0">
             01 — Grassroots Education
@@ -104,7 +102,6 @@ export default function OutreachPage() {
           </div>
         </div>
 
-        {/* SECTION 2 — ENVIRONMENTAL LITERACY */}
         <div>
           <p className="text-sm font-semibold text-accent uppercase tracking-wide mb-2 mt-0">
             02 — Environmental Literacy

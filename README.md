@@ -12,7 +12,7 @@ DuneBroom is a youth-driven robotics project dedicated to combating beach pollut
 
 ## About Me
 
-**[Neev Grover](https://neevgrover.com)** is a Sophomore at the Harker School passionate about Computer Science, Chess, and Music. He enjoys building projects, playing competitive chess, and writing about technology on his **[blog](https://techunpacked.substack.com)**.
+**[Neev Grover](https://neevgrover.com)** is a Junior at the Harker School passionate about Computer Science, Chess, and Music. He enjoys building projects, playing competitive chess, and writing about technology on his **[blog](https://techunpacked.substack.com)**.
 
 ---
 
@@ -22,28 +22,6 @@ DuneBroom is a youth-driven robotics project dedicated to combating beach pollut
 - **TypeScript**
 - **Tailwind CSS v4**, themed with CSS variables (light and dark mode)
 - **Formspree** for contact form submissions
-
-## Website Structure
-
-```
-app/
-├── layout.tsx                       # Root layout (metadata, Navbar, Footer, theme)
-├── globals.css                      # Theme variables, Tailwind setup, shared classes
-├── page.tsx                         # Homepage
-├── outreach/page.tsx                # Outreach & Impact
-├── system-logic/page.tsx            # System Logic
-├── technical-architecture/page.tsx  # Technical Architecture
-├── about_me/page.tsx                # About Me
-├── contact/                         # Contact form + social links
-├── sitemap.ts                       # Generates /sitemap.xml
-└── not-found.tsx                    # 404 page
-components/
-├── Navbar.tsx                       # Sticky navbar + mobile drawer
-├── Footer.tsx                       # Site footer
-├── socialLinks.tsx                  # Social links (footer + contact page)
-└── ThemeProvider.tsx                # Light/dark theme toggle
-public/                              # Images, robots.txt
-```
 
 ## Pages
 

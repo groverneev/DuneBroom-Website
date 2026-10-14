@@ -29,7 +29,6 @@ export default function TechnicalArchitecturePage() {
         <h1 className="text-5xl font-extrabold tracking-tight mb-2 mt-0">Technical Architecture</h1>
         <p className="text-lg text-muted mb-10 mt-0">Hardware Implementation</p>
 
-        {/* Introduction + Diagram */}
         <div className="pb-8 mb-8 border-b border-border">
           <p className="text-base leading-relaxed text-muted mb-4">
             The DuneBroom robot was engineered using a modular hardware stack defined by specific
@@ -50,7 +49,6 @@ export default function TechnicalArchitecturePage() {
           </div>
         </div>
 
-        {/* Power System */}
         <div className="pb-8 mb-8 border-b border-border">
           <h2 className="text-xl font-semibold mb-2 mt-0">Power System</h2>
           <p className="text-base leading-relaxed text-muted mb-0">
@@ -60,7 +58,6 @@ export default function TechnicalArchitecturePage() {
           </p>
         </div>
 
-        {/* High-Level Processing */}
         <div className="pb-8 mb-8 border-b border-border">
           <h2 className="text-xl font-semibold mb-2 mt-0">High-Level Processing</h2>
           <p className="text-base leading-relaxed text-muted mb-4">
@@ -87,7 +84,6 @@ export default function TechnicalArchitecturePage() {
           </div>
         </div>
 
-        {/* Low-Level Control */}
         <div className="pb-8 mb-8 border-b border-border">
           <h2 className="text-xl font-semibold mb-2 mt-0">Low-Level Control</h2>
           <p className="text-base leading-relaxed text-muted mb-4">
@@ -120,7 +116,6 @@ export default function TechnicalArchitecturePage() {
           </div>
         </div>
 
-        {/* Actuators */}
         <div>
           <h2 className="text-xl font-semibold mb-2 mt-0">Actuators</h2>
           <p className="text-base leading-relaxed text-muted mb-4">

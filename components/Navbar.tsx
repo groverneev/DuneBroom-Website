@@ -57,7 +57,6 @@ export default function Navbar() {
   return (
     <nav className="sticky top-0 z-50 w-full bg-background border-b border-border transition-colors duration-300">
       <div className="max-w-[1200px] mx-auto px-4 flex items-center justify-between h-16">
-        {/* Logo */}
         <Link
           href="/"
           className="font-bold text-xl text-foreground no-underline hover:text-foreground focus-visible:ring-2 focus-visible:ring-accent focus-visible:outline-none rounded px-2 py-1"
@@ -65,7 +64,6 @@ export default function Navbar() {
           DuneBroom
         </Link>
 
-        {/* Desktop links + theme toggle */}
         <div className="hidden md:flex items-center gap-6">
           <ul className="flex gap-7 list-none p-0 items-center">
             {navLinks.map((link) => {
@@ -92,7 +90,6 @@ export default function Navbar() {
           <ThemeButton toggleTheme={toggleTheme} />
         </div>
 
-        {/* Mobile: theme toggle + hamburger */}
         <div className="md:hidden flex items-center gap-2">
           <ThemeButton toggleTheme={toggleTheme} />
 
@@ -116,7 +113,6 @@ export default function Navbar() {
         </div>
       </div>
 
-      {/* Mobile dropdown menu */}
       {mobileMenuOpen && (
         <div id="mobile-menu" className="border-t border-border md:hidden">
           <ul className="max-w-[1200px] mx-auto list-none flex flex-col gap-1 px-4 py-4 m-0">

@@ -33,7 +33,6 @@ export default function AboutPage() {
           About
         </h1>
 
-        {/* Profile */}
         <div className="flex gap-9 items-start mb-10 flex-wrap">
           <Image
             src="/neev_profile.png"
@@ -55,10 +54,8 @@ export default function AboutPage() {
           </div>
         </div>
 
-        {/* Divider */}
         <div className="border-t border-border mb-10" />
 
-        {/* The Mission */}
         <div className="mb-10">
           <h2 className="text-2xl font-bold tracking-tight mb-4 mt-0">The Mission</h2>
           <p className="text-base leading-relaxed text-muted mb-4">
@@ -75,10 +72,8 @@ export default function AboutPage() {
           </p>
         </div>
 
-        {/* Divider */}
         <div className="border-t border-border mb-10" />
 
-        {/* Stats row */}
         <div className="grid grid-cols-2 md:grid-cols-4 gap-5">
           {[
             { value: "450+", label: "Students reached" },

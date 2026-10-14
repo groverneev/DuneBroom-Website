@@ -4,7 +4,6 @@ import Link from "next/link";
 export default function Home() {
   return (
     <main id="main-content">
-      {/* HERO SECTION */}
       <section className="hero-section">
         <h1 className="hero-title">DuneBroom</h1>
         <p className="hero-subtitle">Autonomous beach cleaning powered by machine learning</p>
@@ -37,7 +36,6 @@ export default function Home() {
         </div>
       </section>
 
-      {/* OVERVIEW SECTION */}
       <section id="overview" className="overview-section">
         <div className="overview-content">
           <p className="text-xs font-semibold text-accent uppercase tracking-widest mb-2">
@@ -47,7 +45,6 @@ export default function Home() {
             Overview
           </h2>
 
-          {/* Problem Statement */}
           <div className="pb-10 mb-10 border-b border-border">
             <h3 className="text-xl font-semibold text-foreground mb-4 mt-0">The Problem</h3>
             <p className="text-base leading-relaxed text-subtle mb-0">
@@ -61,7 +58,6 @@ export default function Home() {
             </p>
           </div>
 
-          {/* Hypothesis */}
           <div className="pb-10 mb-10 border-b border-border">
             <h3 className="text-xl font-semibold text-foreground mb-4 mt-0">Hypothesis</h3>
             <p className="text-base leading-relaxed text-subtle mb-0">
@@ -81,7 +77,6 @@ export default function Home() {
             </div>
           </div>
 
-          {/* Key Capabilities */}
           <div className="pb-10 mb-10">
             <h3 className="text-xl font-semibold text-foreground mb-6 mt-0">Key Capabilities</h3>
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
@@ -117,7 +112,6 @@ export default function Home() {
         </div>
       </section>
 
-      {/* RECOGNITION SECTION */}
       <section className="recognition-section">
         <div className="recognition-content">
           <h2 className="recognition-title">Recognition</h2>

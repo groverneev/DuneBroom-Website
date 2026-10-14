@@ -48,7 +48,6 @@ export default function ContactPage() {
 
   return (
     <main id="main-content" className="bg-background transition-colors duration-300">
-      {/* Hero Section */}
       <section className="py-12 text-center px-8">
         <h1 className="text-3xl md:text-5xl font-bold mb-3">Contact</h1>
         <p className="text-lg text-muted max-w-xl mx-auto">
@@ -56,10 +55,8 @@ export default function ContactPage() {
         </p>
       </section>
 
-      {/* Content */}
       <section className="pb-24 px-8">
         <div className="max-w-[900px] mx-auto grid md:grid-cols-2 gap-10">
-          {/* Contact Form */}
           <div className="bg-surface border border-border rounded-lg p-8">
             <h2 className="text-2xl font-bold mb-6">Send a Message</h2>
 
@@ -174,7 +171,6 @@ export default function ContactPage() {
             )}
           </div>
 
-          {/* Contact Info */}
           <div className="flex flex-col gap-7">
             <div className="bg-surface border border-border rounded-lg p-8">
               <h2 className="text-xl font-bold mb-4">Other Ways to Reach Me</h2>

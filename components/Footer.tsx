@@ -14,7 +14,6 @@ export default function Footer() {
     <footer className="bg-surface border-t border-border text-foreground transition-colors duration-300">
       <div className="max-w-[1152px] mx-auto py-12 px-4">
         <div className="footer-grid grid grid-cols-1 gap-8">
-          {/* Site Info */}
           <div>
             <h3 className="text-lg font-bold mb-2 text-foreground">DuneBroom</h3>
             <p className="text-sm text-muted leading-relaxed mb-0">
@@ -24,7 +23,6 @@ export default function Footer() {
             </p>
           </div>
 
-          {/* Quick Links */}
           <div>
             <h4 className="text-xs font-semibold uppercase tracking-wide text-muted mb-4">
               Quick Links
@@ -42,7 +40,6 @@ export default function Footer() {
             </div>
           </div>
 
-          {/* Social Links */}
           <div>
             <h4 className="text-xs font-semibold uppercase tracking-wide text-muted mb-4">
               Connect
@@ -65,7 +62,6 @@ export default function Footer() {
           </div>
         </div>
 
-        {/* Bottom Bar */}
         <div className="border-t border-border mt-8 pt-8 flex flex-col sm:flex-row gap-4 sm:gap-0 sm:justify-between items-center text-sm text-muted">
           <p>&copy; {new Date().getFullYear()} DuneBroom. All rights reserved.</p>
           <p>Autonomous beach cleaning for a cleaner tomorrow.</p>
