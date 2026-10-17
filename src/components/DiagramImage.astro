@@ -1,0 +1,15 @@
+---
+interface Props { kind: 'workflow' | 'hardware' | 'collection' }
+const diagrams = {
+  workflow: { src: '/Figure_1_Operational_Workflow.png', title: 'Autonomous operational workflow', width: 578, height: 1194 },
+  hardware: { src: '/Figure_2_Hardware_Architecture.png', title: 'Hardware architecture', width: 1336, height: 1360 },
+  collection: { src: '/Figure_3_Collection_Sequence.png', title: 'Debris collection sequence', width: 1774, height: 1318 },
+};
+const { kind } = Astro.props;
+const diagram = diagrams[kind];
+---
+<figure class="diagram" aria-labelledby={`${kind}-caption`}>
+  <img src={diagram.src} alt={diagram.title} width={diagram.width} height={diagram.height}
+    loading="lazy" decoding="async" class="block w-full h-auto rounded-md" />
+  <figcaption id={`${kind}-caption`}>{diagram.title}</figcaption>
+</figure>

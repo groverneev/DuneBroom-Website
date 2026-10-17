@@ -1,0 +1,18 @@
+---
+import Layout from '../layouts/Layout.astro';
+---
+<Layout title="Page not found" noindex>
+<main
+      id="main-content"
+      class="flex min-h-[80vh] flex-col items-center justify-center gap-8 bg-background text-center text-foreground"
+    >
+      <div class="flex items-center justify-center gap-4">
+        <h1 class="m-0 text-xl font-bold">404</h1>
+        <div class="h-16 w-px bg-border" />
+        <p class="m-0 text-xl">This page could not be found</p>
+      </div>
+      <a href="/" class="btn-primary">
+        Back to home
+      </a>
+    </main>
+</Layout>

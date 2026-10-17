@@ -1,0 +1,85 @@
+---
+import Layout from '../layouts/Layout.astro';
+import SocialLinks from '../components/SocialLinks.astro';
+---
+<Layout title="Contact" description="Get in touch about DuneBroom — questions, collaboration, school outreach, or press enquiries.">
+  <main id="main-content">
+    <section class="py-12 text-center px-5 sm:px-8">
+      <h1 class="text-3xl md:text-5xl font-bold mb-3">Contact</h1>
+      <p class="text-lg text-muted max-w-xl mx-auto">Have any questions or suggestions? Get in touch!</p>
+    </section>
+    <section class="pb-24 px-5 sm:px-8">
+      <div class="max-w-[900px] mx-auto grid md:grid-cols-2 gap-10">
+        <div class="bg-surface border border-border rounded-lg p-6 sm:p-8">
+          <h2 class="text-2xl font-bold mb-6">Send a Message</h2>
+          <form id="contact-form" action="https://formspree.io/f/xnnvbrzq" method="post" class="flex flex-col gap-5">
+            <div>
+              <label for="name" class="block text-sm font-medium text-subtle mb-1">Name</label>
+              <input id="name" type="text" name="name" autocomplete="name" required placeholder="Your name" class="form-input" />
+            </div>
+            <div>
+              <label for="email" class="block text-sm font-medium text-subtle mb-1">Email</label>
+              <input id="email" type="email" name="email" autocomplete="email" required placeholder="Your email" class="form-input" />
+            </div>
+            <div>
+              <label for="message" class="block text-sm font-medium text-subtle mb-1">Message</label>
+              <textarea id="message" name="message" required rows="5" placeholder="Your message..." class="form-input resize-y"></textarea>
+            </div>
+            <input type="text" name="_gotcha" tabindex="-1" autocomplete="off" aria-hidden="true" class="hidden" />
+            <button type="submit" class="btn-primary w-full disabled:opacity-70">Send Message</button>
+          </form>
+          <p id="form-status" role="status" aria-live="polite" class="text-sm text-subtle mt-4"></p>
+          <button id="send-another" type="button" hidden class="text-accent underline text-sm mt-4">Send another message</button>
+        </div>
+        <div class="flex flex-col gap-7">
+          <div class="bg-surface border border-border rounded-lg p-6 sm:p-8">
+            <h2 class="text-xl font-bold mb-4">Other Ways to Reach Me</h2>
+            <p class="font-medium">Email</p>
+            <p class="text-sm text-muted">groverneev at gmail dot com</p>
+          </div>
+          <div class="bg-surface border border-border rounded-lg p-6 sm:p-8">
+            <h2 class="text-xl font-bold mb-4">Connect on Social</h2>
+            <SocialLinks large />
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+</Layout>
+<script>
+  const form = document.querySelector<HTMLFormElement>('#contact-form')!;
+  const status = document.querySelector<HTMLElement>('#form-status')!;
+  const submit = form.querySelector<HTMLButtonElement>('[type="submit"]')!;
+  const another = document.querySelector<HTMLButtonElement>('#send-another')!;
+  form.addEventListener('submit', async event => {
+    event.preventDefault();
+    if (submit.disabled) return;
+    submit.disabled = true;
+    submit.textContent = 'Sending…';
+    form.setAttribute('aria-busy', 'true');
+    status.textContent = '';
+    try {
+      const response = await fetch(form.action, {
+        method: 'POST', headers: { Accept: 'application/json' }, body: new FormData(form),
+      });
+      if (!response.ok) throw new Error('Submission failed');
+      form.reset();
+      form.hidden = true;
+      status.textContent = "Message sent! Thank you for reaching out. I'll get back to you soon.";
+      another.hidden = false;
+      another.focus();
+    } catch {
+      status.textContent = 'Something went wrong. Please try again or email groverneev@gmail.com directly.';
+    } finally {
+      submit.disabled = false;
+      submit.textContent = 'Send Message';
+      form.removeAttribute('aria-busy');
+    }
+  });
+  another.addEventListener('click', () => {
+    form.hidden = false;
+    another.hidden = true;
+    status.textContent = '';
+    form.querySelector<HTMLInputElement>('#name')?.focus();
+  });
+</script>

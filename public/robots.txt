@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://dunebroom.com/sitemap.xml
+Sitemap: https://dunebroom.com/sitemap-index.xml

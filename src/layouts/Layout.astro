@@ -1,0 +1,60 @@
+---
+import '@fontsource-variable/inter';
+import '../styles/global.css';
+import Navbar from '../components/Navbar.astro';
+import Footer from '../components/Footer.astro';
+import robot from '../assets/DuneBroom_Robot.jpg';
+interface Props { title?: string; description?: string; noindex?: boolean }
+const {
+  title,
+  description = 'DuneBroom is a low-cost autonomous beach-cleaning robot that combines machine-learning-based vision and mechanical sieving to efficiently identify and collect debris from soft-sand environments.',
+  noindex = false,
+} = Astro.props;
+const pageTitle = title ? `${title} | DuneBroom` : 'DuneBroom | Autonomous Beach-Cleaning Robot';
+const canonical = new URL(Astro.url.pathname.replace(/\/$/, '') || '/', Astro.site);
+const image = new URL('/DuneBroom_Robot.jpg', Astro.site);
+const jsonLd = {
+  '@context': 'https://schema.org', '@type': 'Organization', name: 'DuneBroom',
+  url: Astro.site?.href, logo: image.href, description,
+  founder: { '@type': 'Person', name: 'Neev Grover', url: 'https://neevgrover.com', sameAs: ['https://x.com/groverneev01', 'https://github.com/groverneev', 'https://techunpacked.substack.com'] },
+};
+---
+<!doctype html>
+<html lang="en" class="motion-safe:scroll-smooth">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <script is:inline>
+      let theme;
+      try { theme = localStorage.getItem('theme'); } catch { /* Storage may be blocked. */ }
+      document.documentElement.classList.toggle('dark', theme === 'dark' || (theme !== 'light' && matchMedia('(prefers-color-scheme: dark)').matches));
+    </script>
+    <title>{pageTitle}</title>
+    <meta name="description" content={description} />
+    <meta name="robots" content={noindex ? 'noindex, follow' : 'index, follow, max-image-preview:large'} />
+    <link rel="canonical" href={canonical} />
+    <link rel="icon" href="/favicon.png" type="image/png" sizes="64x64" />
+    <meta property="og:title" content={pageTitle} />
+    <meta property="og:description" content={description} />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content={canonical} />
+    <meta property="og:site_name" content="DuneBroom" />
+    <meta property="og:locale" content="en_US" />
+    <meta property="og:image" content={image} />
+    <meta property="og:image:width" content={String(robot.width)} />
+    <meta property="og:image:height" content={String(robot.height)} />
+    <meta property="og:image:alt" content="DuneBroom autonomous beach-cleaning robot" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content={pageTitle} />
+    <meta name="twitter:description" content={description} />
+    <meta name="twitter:image" content={image} />
+    <meta name="twitter:creator" content="@groverneev01" />
+    <script type="application/ld+json" set:html={JSON.stringify(jsonLd).replace(/</g, '\\u003c')} />
+  </head>
+  <body class="min-h-screen bg-background text-foreground antialiased font-sans transition-colors duration-300 ease-in-out flex flex-col">
+    <a href="#main-content" class="skip-link">Skip to main content</a>
+    <Navbar />
+    <slot />
+    <Footer />
+  </body>
+</html>

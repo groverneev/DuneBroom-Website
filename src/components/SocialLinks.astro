@@ -1,0 +1,12 @@
+---
+import { socialLinks } from '../data/social';
+interface Props { large?: boolean }
+const { large = false } = Astro.props;
+---
+<div class="flex gap-3">
+  {socialLinks.map(link => (
+    <a href={link.href} target="_blank" rel="noopener noreferrer" aria-label={link.label}
+       class:list={['text-muted hover:text-foreground transition-colors rounded flex items-center justify-center', large ? 'w-12 h-12 border border-border bg-card-bg hover:border-muted' : 'p-1']}
+    ><Fragment set:html={link.svg} /></a>
+  ))}
+</div>

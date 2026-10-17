@@ -1,0 +1,121 @@
+---
+import Layout from '../layouts/Layout.astro';
+import SiteImage from '../components/SiteImage.astro';
+---
+<Layout title="Outreach & Impact" description="DuneBroom's grassroots education program: environmental literacy workshops reaching 450+ students across 5 schools in India, a children's book, and news coverage.">
+<main id="main-content" class="bg-background transition-colors duration-300">
+      <section class="py-16 max-w-[860px] mx-auto px-8">
+        <p class="text-sm font-semibold text-accent uppercase tracking-wide mb-2">
+          Environment Awareness Program
+        </p>
+        <h1 class="text-5xl font-extrabold leading-tight mb-1 mt-0">
+          Outreach &amp; Impact
+        </h1>
+        <p class="text-lg text-muted mb-4 leading-relaxed mt-0">
+          Combining grassroots education, environmental literacy, and technological innovation
+          to empower the next generation of eco-innovators.
+        </p>
+
+        <div class="flex gap-6 flex-wrap mb-10">
+          <div class="bg-surface rounded-md p-4 text-center border border-border min-w-[140px]">
+            <span class="text-4xl font-extrabold text-accent leading-none tracking-tighter block mb-1">450+</span>
+            <span class="text-sm text-muted">students reached</span>
+          </div>
+          <div class="bg-surface rounded-md p-4 text-center border border-border min-w-[140px]">
+            <span class="text-4xl font-extrabold text-accent leading-none tracking-tighter block mb-1">5</span>
+            <span class="text-sm text-muted">partner schools</span>
+          </div>
+        </div>
+
+        <div class="pb-10 mb-10 border-b border-border">
+          <p class="text-sm font-semibold text-accent uppercase tracking-wide mb-2 mt-0">
+            01 — Grassroots Education
+          </p>
+          <h2 class="text-3xl font-bold leading-tight mb-4 mt-0">Empowering Youth Across Borders</h2>
+          <p class="text-base text-muted leading-relaxed mb-6">
+            Environmental protection is a global responsibility that requires global education.
+            By partnering with multiple schools across India, we hosted interactive environmental
+            awareness workshops to engage students directly. This education was translated into
+            active participation through large-scale environmental-theme drawing competitions,
+            giving hundreds of students a creative platform to express their vision for a cleaner,
+            greener Earth.
+          </p>
+
+          <div class="w-full overflow-hidden rounded-md mb-2">
+            <SiteImage
+              src="/in-classroom.jpg"
+              alt="Students in classroom watching a virtual environmental awareness workshop"
+              sizes="(max-width: 900px) 100vw, 796px"
+              width={1600}
+              height={716}
+              class="w-full object-cover" style="width: 100%; height: auto"
+            />
+          </div>
+          <p class="text-sm text-muted mb-4 mt-0">
+            Virtual environmental awareness workshop — Kasturba Gandhi Balika Vidyalaya, Andhra Pradesh
+          </p>
+
+          <h3 class="text-lg font-semibold mb-1 mt-0">In the News</h3>
+          <p class="text-base text-muted mb-4 leading-relaxed">
+            As covered by regional press across Andhra Pradesh · March 2026
+          </p>
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+            {[
+              { src: "/article-1.jpg", alt: "Prajasakti newspaper coverage of DuneBroom school outreach", width: 1041, height: 1250 },
+              { src: "/article-2.jpg", alt: "Andhra Prabha newspaper coverage of DuneBroom school outreach", width: 1600, height: 908 },
+              { src: "/article-3.jpg", alt: "Eenadu newspaper coverage of DuneBroom school outreach", width: 1052, height: 406 },
+              { src: "/article-4.jpg", alt: "Manam newspaper coverage of DuneBroom school outreach", width: 1600, height: 1032 },
+            ].map((article) => (
+              <div class="overflow-hidden rounded-md border border-border">
+                <SiteImage
+                  src={article.src}
+                  alt={article.alt}
+                  sizes="(max-width: 768px) 100vw, 390px"
+                  width={article.width}
+                  height={article.height}
+                  class="w-full object-cover" style="width: 100%; height: auto"
+                />
+              </div>
+            ))}
+          </div>
+        </div>
+
+        <div>
+          <p class="text-sm font-semibold text-accent uppercase tracking-wide mb-2 mt-0">
+            02 — Environmental Literacy
+          </p>
+          <h2 class="text-3xl font-bold leading-tight mb-4 mt-0">Educating Through Pages</h2>
+          <p class="text-base text-muted leading-relaxed mb-6">
+            Real change starts with understanding. To help kids connect with the environment,
+            Neev wrote <strong>Adventures of Sunbeam</strong> — a book that turns complex
+            environmental issues into inspiring stories for young readers. It includes an appendix
+            full of interactive activities and drawing pages, and now serves as the foundation for
+            our educational programs everywhere.
+          </p>
+
+          <a
+            href="https://www.amazon.com/Adventures-Sunbeam-heartwarming-sustainability-potential-ebook/dp/B0GKCXW4DL/"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="btn-primary mb-6"
+          >
+            Read Adventures of Sunbeam &rarr;
+          </a>
+
+          <div class="w-full overflow-hidden rounded-md mb-2">
+            <SiteImage
+              src="/people-holding-up-book.jpg"
+              alt="Students holding up copies of Adventures of Sunbeam"
+              width={1600}
+              height={624}
+              sizes="(max-width: 900px) 100vw, 796px"
+              class="w-full object-cover" style="width: 100%; height: auto"
+            />
+          </div>
+          <p class="text-sm text-muted mt-0">
+            Students receiving copies of <em>Adventures of Sunbeam</em> — Andhra Pradesh, India
+          </p>
+        </div>
+      </section>
+    </main>
+</Layout>

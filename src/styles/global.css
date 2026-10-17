@@ -1,9 +1,5 @@
 @import "tailwindcss";
 
-/*
- * The theme toggle sets `class="dark"` on <html>, so point Tailwind's `dark:`
- * variant at that class instead of its default `prefers-color-scheme` query.
- */
 @custom-variant dark (&:where(.dark, .dark *));
 
 :root {
@@ -22,7 +18,7 @@
 html.dark {
   --background: #111110;
   --foreground: #f0eeea;
-  --muted: #8f8f8f;
+  --muted: #a3a3a3;
   --subtle: #a8a29e;
   --border: #252422;
   --surface: #1c1b19;
@@ -32,14 +28,6 @@ html.dark {
   color-scheme: dark;
 }
 
-/*
- * Register the theme palette with Tailwind so utilities like `text-muted`,
- * `bg-surface` and `border-border` actually generate CSS.
- *
- * `inline` is required: it makes Tailwind emit `color: var(--muted)` rather
- * than baking in the resolved hex at build time, so the `html.dark` overrides
- * above keep working at runtime.
- */
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
@@ -51,7 +39,7 @@ html.dark {
   --color-on-accent: var(--on-accent);
   --color-card-bg: var(--card-bg);
 
-  --font-sans: var(--font-inter), system-ui, -apple-system, BlinkMacSystemFont,
+  --font-sans: "Inter Variable", system-ui, -apple-system, BlinkMacSystemFont,
     "Segoe UI", Roboto, sans-serif;
 }
 
@@ -64,7 +52,6 @@ body {
   transition: background-color 0.3s, color 0.3s;
 }
 
-/* Hero section */
 .hero-section {
   min-height: 85vh;
   display: flex;
@@ -101,7 +88,6 @@ body {
   margin: 0 auto 2rem auto;
 }
 
-/* Buttons */
 .btn-primary {
   background: var(--accent);
   color: var(--on-accent);
@@ -153,7 +139,6 @@ body {
   margin-bottom: 3rem;
 }
 
-/* Hero image */
 .hero-image-wrapper {
   margin-top: 2rem;
   width: 100%;
@@ -172,7 +157,6 @@ body {
   box-shadow: 0 20px 50px rgba(0, 0, 0, 0.15);
 }
 
-/* Respect the OS "reduce motion" setting */
 @media (prefers-reduced-motion: reduce) {
   .hero-image,
   .hero-image:hover {
@@ -181,7 +165,6 @@ body {
   }
 }
 
-/* Overview section */
 .overview-section {
   padding: 4rem 0 2rem 0;
   background: var(--background);
@@ -194,7 +177,6 @@ body {
   padding: 0 2rem;
 }
 
-/* Recognition section */
 .recognition-section {
   padding: 4rem 0 5rem 0;
   background: var(--surface);
@@ -215,7 +197,6 @@ body {
   margin: 0 0 1rem 0;
 }
 
-/* Contact page form controls */
 .form-input {
   width: 100%;
   padding: 0.625rem 0.75rem;
@@ -239,13 +220,11 @@ body {
   box-shadow: 0 0 0 3px color-mix(in srgb, var(--accent) 12%, transparent);
 }
 
-/* Accessibility: visible keyboard focus */
 :focus-visible {
   outline: 2px solid var(--accent);
   outline-offset: 2px;
 }
 
-/* Skip-to-content link: off-screen until keyboard focused */
 .skip-link {
   position: absolute;
   left: -9999px;
@@ -265,7 +244,6 @@ body {
   text-decoration: none;
 }
 
-/* Theme toggle: both icons are rendered; CSS shows the relevant one. */
 .theme-icon-dark {
   display: none;
 }
@@ -278,9 +256,30 @@ html.dark .theme-icon-dark {
   display: block;
 }
 
-/* Footer responsive grid */
 @media (min-width: 768px) {
   .footer-grid {
     grid-template-columns: repeat(3, 1fr);
   }
+}
+
+[hidden] { display: none !important; }
+main { flex: 1; }
+
+.article-content { color: var(--muted); line-height: 1.8; }
+.article-content > p { margin: 1.5rem 0; }
+.article-content h2 { color: var(--foreground); font-size: 1.35rem; font-weight: 700; margin: 2.5rem 0 0.75rem; padding-top: 2rem; border-top: 1px solid var(--border); }
+.article-content h3 { color: var(--foreground); font-size: 1rem; font-weight: 600; margin: 1.5rem 0 0.5rem; }
+.article-content strong { color: var(--foreground); }
+
+.diagram { margin: 0 0 2.5rem; padding: 1rem; background: var(--surface); border: 1px solid var(--border); border-radius: 0.5rem; }
+.diagram figcaption { margin-top: 0.75rem; color: var(--muted); font-size: 0.8rem; text-align: center; }
+
+@media (max-width: 639px) {
+  .hero-section { padding: 4rem 1.25rem 3rem; }
+  .hero-title { font-size: 2.75rem; }
+  .hero-subtitle { font-size: 1.15rem; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after { scroll-behavior: auto !important; transition: none !important; animation: none !important; }
 }

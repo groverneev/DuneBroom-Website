@@ -1,78 +1,71 @@
 # AGENTS.md — DuneBroom Website
 
-Next.js site for DuneBroom, an autonomous beach-cleaning robot. Live at [dunebroom.com](https://dunebroom.com).
+Static Astro site for DuneBroom, an autonomous beach-cleaning robot. Hosted on Vercel at https://dunebroom.com.
 
 ## Stack
-- Next.js 16 (App Router, Turbopack), React 19, TypeScript
-- Tailwind CSS v4, themed through CSS variables in `app/globals.css`
-- Inter, self-hosted via `next/font/google`
-- Contact form posts to Formspree (`https://formspree.io/f/xnnvbrzq`)
-- ESLint 9 flat config (`eslint.config.mjs`)
+- Astro 7, TypeScript 6 (strict), Tailwind CSS 4 through `@tailwindcss/vite`
+- Bun for dependency installation and package scripts; commit `bun.lock`
+- Node.js 24 for Astro tooling; the deployed site has no server runtime
+- Inter Variable, self-hosted through `@fontsource-variable/inter`
+- Formspree contact endpoint: `https://formspree.io/f/xnnvbrzq`
+- ESLint flat config with Astro and TypeScript rules
+- Playwright for browser checks
 
 ## Structure
 ```
-app/
-├── layout.tsx         # Site-wide metadata, font, pre-paint theme script, Navbar + Footer
-├── globals.css        # Theme variables, Tailwind registration, shared component classes
-├── page.tsx           # Homepage; each other route is app/<route>/page.tsx
-├── contact/layout.tsx # Contact metadata (the contact page is a client component)
-├── sitemap.ts         # Generates /sitemap.xml; list every route here
-└── not-found.tsx      # 404 page
-components/
-├── Navbar.tsx         # Nav links live in the `navLinks` array
-├── Footer.tsx
-├── socialLinks.tsx    # Social links shared by the footer and contact page
-└── ThemeProvider.tsx  # Theme toggle
-public/                # Images, robots.txt
+src/
+  assets/                 Original photos, optimized at build time
+  components/             Navbar, Footer, theme button, social links, SiteImage
+  content/technical/      Markdown technical writeups
+  content.config.ts       Validated Astro content collection
+  data/                   Navigation and social link definitions
+  layouts/Layout.astro    Shared metadata, font, pre-paint theme script, shell
+  pages/                  Static pages; [...slug].astro renders technical articles
+  styles/global.css       Theme tokens, Tailwind registration, shared components
+public/                   robots.txt, favicon, original social preview image
+tests/                    Browser regression checks
+astro.config.mjs          Static output, canonical site URL, sitemap, Tailwind
+vercel.json               Astro preset, Bun install/build commands, dist output
 ```
 
 ## Routes
-| Route | Page |
-|-------|------|
-| `/` | Homepage — hero, overview, recognition |
-| `/outreach` | Outreach & Impact — school outreach, news coverage |
-| `/system-logic` | System Logic |
-| `/technical-architecture` | Technical Architecture |
-| `/about_me` | About Me |
-| `/contact` | Contact form + social links |
+- `/`: homepage, overview, recognition
+- `/outreach`: school outreach, news coverage, children's book
+- `/system-logic`: operational workflow and collection sequence
+- `/technical-architecture`: hardware architecture
+- `/about_me`: about the creator
+- `/contact`: contact form and social links
+- `404.astro` supplies the custom error page and is excluded from the sitemap
 
-## Styling
-- Style with Tailwind utilities. Use inline `style` only for what utilities can't express
-  (e.g. `width/height: auto` on `next/image`).
-- Colours are CSS variables defined in `:root` (light) and `html.dark` (dark), then registered
-  with Tailwind in the `@theme inline` block as `--color-*`. That registration is what makes
-  `text-muted`, `bg-surface`, `border-border` etc. exist. A new colour needs both entries, or
-  its utility silently generates nothing. Keep `inline`, or dark mode stops working.
-- `dark:` variants follow the `html.dark` class (via `@custom-variant`), not the OS setting.
-- Text must meet WCAG AA (4.5:1) on `background`, `surface` and `card-bg` in both themes.
-  Text on an `accent` fill uses `text-on-accent` (white in light mode, near-black in dark),
-  never `text-white`.
-- Multi-property component classes (`.hero-section`, `.btn-primary`, `.form-input`, …) live in
-  `globals.css`. Never define a class there that shares a Tailwind utility's name (`.mt-4`,
-  `.container`, …); it would override the utility everywhere and break its variants.
+## Styling and theme
+- Use Tailwind utilities; shared multi-property classes belong in `global.css`.
+- Never create a shared class with a Tailwind utility's name.
+- Theme tokens live in `:root` and `html.dark`, registered with `@theme inline` as `--color-*`. New colors need both a token and registration.
+- Text must meet WCAG AA (4.5:1) on background, surface, and card backgrounds in both themes. Text on accent fills uses `text-on-accent`.
+- The `dark` class on `<html>` is the only theme state. The inline head script applies the saved preference or OS setting before paint. The theme button toggles and saves it; icons switch through CSS.
+- Respect reduced motion. Preserve the original PNG diagrams in public/ and display them responsively through DiagramImage.astro with alternative text and semantic figure captions.
 
-## Theme
-The theme is the `dark` class on `<html>` and nothing else — it is not React state. An inline
-script in `app/layout.tsx` applies it before first paint — the choice saved in `localStorage`,
-or else the OS `prefers-color-scheme` setting (hence
-`suppressHydrationWarning` on `<html>`), and `ThemeProvider` toggles and saves it. The toggle
-icons are swapped in CSS (`.theme-icon-light` / `.theme-icon-dark`).
-
-## Adding a page
-- Give its `<main>` `id="main-content"` — the skip link in the root layout targets it.
-- Export `metadata` with `title`, `description` and `alternates.canonical`. The root layout
-  supplies the `%s | DuneBroom` title template and `metadataBase`. A page-level `openGraph`
-  block replaces the root one entirely, so repeat `images` in it.
-- Add the route to `navLinks` in `components/Navbar.tsx` and to `routes` in `app/sitemap.ts`.
+## Pages and content
+- Every page must have one `<main id="main-content">` and one `<h1>`.
+- Wrap pages in `Layout`, passing title and description. The layout supplies canonical, Open Graph, Twitter, structured data, favicon, and shared navigation.
+- Technical articles use Markdown frontmatter (`title`, `description`) validated by the content collection. Their filenames become routes through `[...slug].astro`.
+- Add navigable pages to `src/data/navigation.ts`. `@astrojs/sitemap` discovers generated routes automatically; robots.txt points to `/sitemap-index.xml`.
+- Keep static content server-rendered at build time. Use small scripts for interactions; add a UI framework only if a feature needs it.
+- Contact uses a normal POST form enhanced with fetch. Preserve native validation, the `_gotcha` honeypot, pending state, live status messages, retry behavior, and the no-JavaScript fallback.
 
 ## Images
-With `next/image`, the declared `width`/`height` must match the file's real aspect ratio.
-Full-width images also need `style={{ width: "100%", height: "auto" }}` and a `sizes` attribute.
+- Put photos in `src/assets` and render through `SiteImage.astro` for build-time WebP and responsive srcsets.
+- Dimensions must follow actual source metadata. Full-width photos need `sizes` and responsive width/height styling.
+- Keep `/public/DuneBroom_Robot.jpg` available as the absolute social preview URL.
+
+## Validation and deployment
+- `bun ci`, `bun run check`, `bun run lint`, `bun run build`, then `bun run test`.
+- Browser setup: `bunx playwright install chromium`; optionally set `PLAYWRIGHT_CHANNEL=msedge` to use an installed Edge browser.
+- Tests mock Formspree; do not send real messages during checks.
+- Vercel uses static `dist` output and the settings in `vercel.json`. No Astro server adapter is required.
 
 ## Keeping docs current
-When you change routes, file structure, the stack or these conventions, update this file, and
-`README.md` if the change is visible to readers of the repo.
+Update this file and README.md when changing routes, structure, stack, or conventions.
 
 ## Commits
-Don't add AI co-author trailers (e.g. `Co-Authored-By: Claude ...`) or "Generated with" lines to
-commit messages or PR descriptions.
+Do not add AI co-author trailers or "Generated with" lines to commits or PR descriptions.

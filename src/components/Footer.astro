@@ -1,0 +1,48 @@
+---
+import { navLinks } from '../data/navigation';
+import SocialLinks from './SocialLinks.astro';
+const quickLinks = navLinks;
+---
+<footer class="bg-surface border-t border-border text-foreground transition-colors duration-300">
+      <div class="max-w-[1152px] mx-auto py-12 px-4">
+        <div class="footer-grid grid grid-cols-1 gap-8">
+          <div>
+            <h3 class="text-lg font-bold mb-2 text-foreground">DuneBroom</h3>
+            <p class="text-sm text-muted leading-relaxed mb-0">
+              An autonomous beach-cleaning robot designed to keep our coastlines
+              pristine. Combining robotics, computer vision, and sustainable
+              engineering.
+            </p>
+          </div>
+
+          <div>
+            <h4 class="text-xs font-semibold uppercase tracking-wide text-muted mb-4">
+              Quick Links
+            </h4>
+            <div class="grid grid-cols-[auto_auto] gap-2 justify-start max-w-sm">
+              {quickLinks.map((link) => (
+                <a
+                  href={link.href}
+                  class="text-sm text-subtle hover:text-foreground transition-colors focus-visible:ring-2 focus-visible:ring-accent focus-visible:outline-none px-2 py-1 rounded"
+                >
+                  {link.label}
+                </a>
+              ))}
+            </div>
+          </div>
+
+          <div>
+            <h4 class="text-xs font-semibold uppercase tracking-wide text-muted mb-4">
+              Connect
+            </h4>
+            <SocialLinks />
+            <p class="text-sm text-muted mt-4">groverneev at gmail dot com</p>
+          </div>
+        </div>
+
+        <div class="border-t border-border mt-8 pt-8 flex flex-col sm:flex-row gap-4 sm:gap-0 sm:justify-between items-center text-sm text-muted">
+          <p>&copy; {new Date().getFullYear()} DuneBroom. All rights reserved.</p>
+          <p>Autonomous beach cleaning for a cleaner tomorrow.</p>
+        </div>
+      </div>
+    </footer>
