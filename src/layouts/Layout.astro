@@ -3,7 +3,7 @@ import '@fontsource-variable/inter';
 import '../styles/global.css';
 import Navbar from '../components/Navbar.astro';
 import Footer from '../components/Footer.astro';
-import robot from '../assets/DuneBroom_Robot.jpg';
+import robot from '../assets/robot-new.jpg';
 interface Props { title?: string; description?: string; noindex?: boolean }
 const {
   title,
@@ -12,7 +12,7 @@ const {
 } = Astro.props;
 const pageTitle = title ? `${title} | DuneBroom` : 'DuneBroom | Autonomous Beach-Cleaning Robot';
 const canonical = new URL(Astro.url.pathname.replace(/\/$/, '') || '/', Astro.site);
-const image = new URL('/DuneBroom_Robot.jpg', Astro.site);
+const image = new URL(robot.src, Astro.site);
 const jsonLd = {
   '@context': 'https://schema.org', '@type': 'Organization', name: 'DuneBroom',
   url: Astro.site?.href, logo: image.href, description,
