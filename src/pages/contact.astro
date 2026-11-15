@@ -4,41 +4,40 @@ import SocialLinks from '../components/SocialLinks.astro';
 ---
 <Layout title="Contact" description="Get in touch about DuneBroom — questions, collaboration, school outreach, or press enquiries.">
   <main id="main-content">
-    <section class="py-12 text-center px-5 sm:px-8">
-      <h1 class="text-3xl md:text-5xl font-bold mb-3">Contact</h1>
-      <p class="text-lg text-muted max-w-xl mx-auto">Have any questions or suggestions? Get in touch!</p>
+    <section class="pt-16 pb-12 text-center px-4 sm:px-8">
+      <h1 class="text-4xl md:text-5xl font-medium tracking-tight mb-4 mt-0">Contact</h1>
+      <p class="text-lg text-muted max-w-xl mx-auto">Questions about DuneBroom, collaboration, school outreach or press enquiries</p>
     </section>
-    <section class="pb-24 px-5 sm:px-8">
-      <div class="max-w-[900px] mx-auto grid md:grid-cols-2 gap-10">
-        <div class="bg-surface border border-border rounded-lg p-6 sm:p-8">
-          <h2 class="text-2xl font-bold mb-6">Send a Message</h2>
+    <section class="pb-24 px-4 sm:px-8">
+      <div class="max-w-[900px] mx-auto grid md:grid-cols-2 gap-8 items-start">
+        <div class="bg-surface border border-border rounded-2xl p-6 sm:p-8">
+          <h2 class="text-xl font-medium mb-6 mt-0">Send a message</h2>
           <form id="contact-form" action="https://formspree.io/f/xnnvbrzq" method="post" class="flex flex-col gap-5">
             <div>
-              <label for="name" class="block text-sm font-medium text-subtle mb-1">Name</label>
+              <label for="name" class="block text-sm font-medium text-subtle mb-2">Name</label>
               <input id="name" type="text" name="name" autocomplete="name" required placeholder="Your name" class="form-input" />
             </div>
             <div>
-              <label for="email" class="block text-sm font-medium text-subtle mb-1">Email</label>
+              <label for="email" class="block text-sm font-medium text-subtle mb-2">Email</label>
               <input id="email" type="email" name="email" autocomplete="email" required placeholder="Your email" class="form-input" />
             </div>
             <div>
-              <label for="message" class="block text-sm font-medium text-subtle mb-1">Message</label>
-              <textarea id="message" name="message" required rows="5" placeholder="Your message..." class="form-input resize-y"></textarea>
+              <label for="message" class="block text-sm font-medium text-subtle mb-2">Message</label>
+              <textarea id="message" name="message" required rows="5" placeholder="Your message" class="form-input resize-y"></textarea>
             </div>
             <input type="text" name="_gotcha" tabindex="-1" autocomplete="off" aria-hidden="true" class="hidden" />
-            <button type="submit" class="btn-primary w-full disabled:opacity-70">Send Message</button>
+            <button type="submit" class="btn-primary w-full">Send message</button>
           </form>
           <p id="form-status" role="status" aria-live="polite" class="text-sm text-subtle mt-4"></p>
           <button id="send-another" type="button" hidden class="text-accent underline text-sm mt-4">Send another message</button>
         </div>
-        <div class="flex flex-col gap-7">
-          <div class="bg-surface border border-border rounded-lg p-6 sm:p-8">
-            <h2 class="text-xl font-bold mb-4">Other Ways to Reach Me</h2>
-            <p class="font-medium">Email</p>
-            <p class="text-sm text-muted">groverneev at gmail dot com</p>
+        <div class="flex flex-col gap-8">
+          <div class="bg-surface border border-border rounded-2xl p-6 sm:p-8">
+            <h2 class="text-xl font-medium mb-4 mt-0">Email</h2>
+            <p class="text-[15px] text-subtle m-0">groverneev at gmail dot com</p>
           </div>
-          <div class="bg-surface border border-border rounded-lg p-6 sm:p-8">
-            <h2 class="text-xl font-bold mb-4">Connect on Social</h2>
+          <div class="bg-surface border border-border rounded-2xl p-6 sm:p-8">
+            <h2 class="text-xl font-medium mb-4 mt-0">Elsewhere</h2>
             <SocialLinks large />
           </div>
         </div>
@@ -65,14 +64,14 @@ import SocialLinks from '../components/SocialLinks.astro';
       if (!response.ok) throw new Error('Submission failed');
       form.reset();
       form.hidden = true;
-      status.textContent = "Message sent! Thank you for reaching out. I'll get back to you soon.";
+      status.textContent = "Message sent. Thanks for reaching out, I'll get back to you soon.";
       another.hidden = false;
       another.focus();
     } catch {
       status.textContent = 'Something went wrong. Please try again or email groverneev@gmail.com directly.';
     } finally {
       submit.disabled = false;
-      submit.textContent = 'Send Message';
+      submit.textContent = 'Send message';
       form.removeAttribute('aria-busy');
     }
   });

@@ -12,6 +12,7 @@
   --accent: #0f766e;
   --on-accent: #ffffff;
   --card-bg: #faf9f7;
+  --ease: cubic-bezier(0.22, 1, 0.36, 1);
   color-scheme: light;
 }
 
@@ -41,6 +42,7 @@ html.dark {
 
   --font-sans: "Inter Variable", system-ui, -apple-system, BlinkMacSystemFont,
     "Segoe UI", Roboto, sans-serif;
+  --font-mono: ui-monospace, "SF Mono", Menlo, Consolas, monospace;
 }
 
 body {
@@ -49,136 +51,167 @@ body {
   font-family: var(--font-sans);
   margin: 0;
   padding: 0;
-  transition: background-color 0.3s, color 0.3s;
 }
 
+/* Signature: measurements and counts set like notes beside a prototype */
+.figure {
+  font-family: var(--font-mono);
+  font-variant-numeric: tabular-nums;
+  letter-spacing: 0;
+}
+
+/* Hero: text beside the real robot */
 .hero-section {
-  min-height: 85vh;
+  min-height: calc(100svh - 64px);
   display: flex;
-  flex-direction: column;
-  justify-content: center;
   align-items: center;
-  background: var(--background);
-  text-align: center;
-  padding: 6rem 2rem 5rem 2rem;
-  transition: background-color 0.3s;
+  padding: 64px 32px;
+}
+
+.hero-inner {
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 48px;
+  align-items: center;
+}
+
+@media (min-width: 1024px) {
+  .hero-inner {
+    grid-template-columns: 5fr 6fr;
+    gap: 64px;
+  }
 }
 
 .hero-title {
   font-size: 56px;
-  font-weight: 800;
+  font-weight: 500;
   letter-spacing: -0.03em;
+  line-height: 1.05;
   margin: 0;
   color: var(--foreground);
-  line-height: 1.1;
+  max-width: 12em;
 }
 
 .hero-subtitle {
-  font-size: 22px;
-  font-weight: 400;
-  margin: 1rem 0 1.5rem 0;
-  color: var(--muted);
-}
-
-.hero-description {
-  font-size: 17px;
-  line-height: 1.7;
+  font-size: 18px;
+  line-height: 28px;
   color: var(--subtle);
-  max-width: 580px;
-  margin: 0 auto 2rem auto;
+  max-width: 36rem;
+  margin: 24px 0 32px;
 }
 
-.btn-primary {
-  background: var(--accent);
-  color: var(--on-accent);
-  font-weight: 600;
-  font-size: 15px;
-  border-radius: 4px;
-  padding: 11px 28px;
-  text-decoration: none;
-  transition: opacity 0.2s, box-shadow 0.2s;
-  display: inline-block;
-  border: none;
-  cursor: pointer;
-}
-
-.btn-primary:hover {
-  opacity: 0.85;
-  box-shadow: 0 4px 12px color-mix(in srgb, var(--accent) 30%, transparent);
-}
-
-.btn-primary:disabled {
-  opacity: 0.7;
-  cursor: not-allowed;
-  box-shadow: none;
-}
-
-.btn-secondary {
-  background: transparent;
-  color: var(--foreground);
-  font-weight: 500;
-  font-size: 15px;
-  border-radius: 4px;
-  padding: 11px 28px;
-  text-decoration: none;
-  transition: background-color 0.2s, border-color 0.2s;
-  display: inline-block;
-  border: 1px solid var(--border);
-}
-
-.btn-secondary:hover {
-  background-color: var(--surface);
-  border-color: var(--muted);
-}
-
-.button-group {
-  display: flex;
-  gap: 12px;
-  justify-content: center;
-  flex-wrap: wrap;
-  margin-bottom: 3rem;
-}
-
-.hero-image-wrapper {
-  margin-top: 2rem;
-  width: 100%;
-  max-width: 760px;
+.hero-visual {
+  margin: 0;
 }
 
 .hero-image {
   display: block;
   border-radius: 12px;
-  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.1);
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.06);
 }
 
-.hero-image:hover {
-  transform: translateY(-4px);
-  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.15);
+.spec-strip {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 16px 24px;
+  margin: 20px 0 0;
+  padding-top: 16px;
+  border-top: 1px solid var(--border);
 }
 
-@media (prefers-reduced-motion: reduce) {
-  .hero-image,
-  .hero-image:hover {
-    transform: none;
-    transition: none;
-  }
+@media (min-width: 640px) {
+  .spec-strip { grid-template-columns: repeat(4, 1fr); }
+}
+
+.spec-strip > div {
+  display: flex;
+  flex-direction: column-reverse;
+  justify-content: flex-end;
+}
+
+.spec-strip dd {
+  margin: 0;
+  font-size: 20px;
+  line-height: 28px;
+  color: var(--foreground);
+}
+
+.spec-strip dt {
+  font-size: 13px;
+  line-height: 20px;
+  color: var(--muted);
+}
+
+.btn-primary,
+.btn-secondary {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  height: 44px;
+  padding: 0 20px;
+  font-size: 15px;
+  font-weight: 500;
+  border-radius: 8px;
+  text-decoration: none;
+  cursor: pointer;
+  transition: background-color 150ms var(--ease), border-color 150ms var(--ease), transform 150ms var(--ease);
+}
+
+.btn-primary:active,
+.btn-secondary:active {
+  transform: scale(0.98);
+}
+
+.btn-primary {
+  background: var(--accent);
+  color: var(--on-accent);
+  border: none;
+}
+
+.btn-primary:hover {
+  background: color-mix(in srgb, var(--accent) 88%, var(--foreground));
+}
+
+.btn-primary:disabled {
+  opacity: 0.7;
+  cursor: not-allowed;
+  transform: none;
+}
+
+.btn-secondary {
+  background: var(--card-bg);
+  color: var(--foreground);
+  border: 1px solid var(--border);
+}
+
+.btn-secondary:hover {
+  background-color: var(--surface);
+  border-color: color-mix(in srgb, var(--foreground) 16%, transparent);
+}
+
+.button-group {
+  display: flex;
+  gap: 12px;
+  flex-wrap: wrap;
 }
 
 .overview-section {
-  padding: 4rem 0 2rem 0;
-  background: var(--background);
+  padding: 96px 0;
   border-top: 1px solid var(--border);
 }
 
 .overview-content {
   max-width: 860px;
   margin: 0 auto;
-  padding: 0 2rem;
+  padding: 0 32px;
 }
 
 .recognition-section {
-  padding: 4rem 0 5rem 0;
+  padding: 80px 0;
   background: var(--surface);
   text-align: center;
 }
@@ -186,27 +219,28 @@ body {
 .recognition-content {
   max-width: 800px;
   margin: 0 auto;
-  padding: 0 2rem;
+  padding: 0 32px;
 }
 
 .recognition-title {
-  font-size: 34px;
-  font-weight: 700;
+  font-size: 32px;
+  font-weight: 500;
   letter-spacing: -0.02em;
+  line-height: 1.15;
   color: var(--foreground);
-  margin: 0 0 1rem 0;
+  margin: 0 0 16px;
 }
 
 .form-input {
   width: 100%;
-  padding: 0.625rem 0.75rem;
+  padding: 10px 12px;
   border: 1px solid var(--border);
-  border-radius: 4px;
+  border-radius: 8px;
   font-size: 1rem;
   outline: none;
   background: var(--card-bg);
   color: var(--foreground);
-  transition: border-color 0.2s, box-shadow 0.2s, background-color 0.3s, color 0.3s;
+  transition: border-color 150ms var(--ease), box-shadow 150ms var(--ease);
   box-sizing: border-box;
 }
 
@@ -233,9 +267,9 @@ body {
 }
 
 .skip-link:focus {
-  left: 1rem;
-  top: 1rem;
-  padding: 0.75rem 1rem;
+  left: 16px;
+  top: 16px;
+  padding: 12px 16px;
   color: var(--foreground);
   background: var(--card-bg);
   border: 1px solid var(--border);
@@ -266,18 +300,20 @@ html.dark .theme-icon-dark {
 main { flex: 1; }
 
 .article-content { color: var(--muted); line-height: 1.8; }
-.article-content > p { margin: 1.5rem 0; }
-.article-content h2 { color: var(--foreground); font-size: 1.35rem; font-weight: 700; margin: 2.5rem 0 0.75rem; padding-top: 2rem; border-top: 1px solid var(--border); }
-.article-content h3 { color: var(--foreground); font-size: 1rem; font-weight: 600; margin: 1.5rem 0 0.5rem; }
-.article-content strong { color: var(--foreground); }
+.article-content > p { margin: 24px 0; }
+.article-content h2 { color: var(--foreground); font-size: 22px; font-weight: 500; letter-spacing: -0.01em; margin: 40px 0 12px; padding-top: 32px; border-top: 1px solid var(--border); }
+.article-content h3 { color: var(--foreground); font-size: 16px; font-weight: 500; margin: 24px 0 8px; }
+.article-content strong { color: var(--foreground); font-weight: 500; }
 
-.diagram { margin: 0 0 2.5rem; padding: 1rem; background: var(--surface); border: 1px solid var(--border); border-radius: 0.5rem; }
-.diagram figcaption { margin-top: 0.75rem; color: var(--muted); font-size: 0.8rem; text-align: center; }
+.diagram { margin: 0 0 40px; padding: 16px; background: var(--surface); border: 1px solid var(--border); border-radius: 12px; }
+.diagram figcaption { margin-top: 12px; color: var(--muted); font-size: 13px; text-align: center; }
 
 @media (max-width: 639px) {
-  .hero-section { padding: 4rem 1.25rem 3rem; }
-  .hero-title { font-size: 2.75rem; }
-  .hero-subtitle { font-size: 1.15rem; }
+  .hero-section { padding: 48px 16px 64px; min-height: 0; }
+  .hero-title { font-size: 40px; letter-spacing: -0.02em; }
+  .hero-subtitle { font-size: 17px; }
+  .overview-section { padding: 64px 0; }
+  .overview-content, .recognition-content { padding: 0 16px; }
 }
 
 @media (prefers-reduced-motion: reduce) {
