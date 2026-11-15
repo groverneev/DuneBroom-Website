@@ -1,28 +1,37 @@
 ---
 import Layout from '../layouts/Layout.astro';
 import SiteImage from '../components/SiteImage.astro';
+
+const criteria = [
+  { name: 'Debris detection', target: 'Recall ≥ 70% for 5–25 mm items and ≥ 90% for items 25 mm or larger; precision ≥ 0.80' },
+  { name: 'Density accuracy', target: 'Mean absolute percentage error ≤ 15% against plots with a known density' },
+  { name: 'Repeatability', target: 'Coefficient of variation ≤ 10% across five or more surveys of the same plot' },
+  { name: 'Coverage and counting', target: 'Surveyed area within 5% of the measured area; ≥ 95% of items in overlapping images or lanes counted exactly once' },
+  { name: 'Survey efficiency', target: 'At least 1 m²/min, with the count and density produced automatically when the survey ends' },
+];
 ---
 <Layout>
 <main id="main-content">
       <section class="hero-section">
         <div class="hero-inner">
           <div>
-            <h1 class="hero-title">A robot that sifts litter out of beach sand</h1>
+            <h1 class="hero-title">A low-cost rover that measures how much trash is on a beach</h1>
             <p class="hero-subtitle">
-              DuneBroom is a low-cost autonomous robot. Its machine-learning vision tells bottle
-              caps and wrappers apart from seaweed and rocks, and a scooper-sieve lifts them out
-              through a 2&nbsp;mm mesh.
+              DuneBroom drives a stretch of shoreline in lanes while a downward-facing camera and an
+              onboard detection model count litter as small as 5&nbsp;mm. When the survey ends, it reports
+              trash density in items per square meter, consistently enough to show whether a beach is
+              getting cleaner.
             </p>
             <div class="button-group">
-              <a href="/system-logic" class="btn-primary">How it works</a>
-              <a href="/outreach" class="btn-secondary">Our outreach</a>
+              <a href="/system-logic" class="btn-primary">How a survey works</a>
+              <a href="/technical-architecture" class="btn-secondary">Technical architecture</a>
             </div>
           </div>
 
           <figure class="hero-visual">
             <SiteImage
               src="/robot-new.jpg"
-              alt="DuneBroom prototype: a tracked rover carrying a Raspberry Pi and Arduino, with a webcam mounted on a PVC arm"
+              alt="DuneBroom prototype: a tracked rover carrying a Raspberry Pi 5 and Arduino, with a downward-facing camera on a PVC boom reaching out ahead of the tracks"
               width={1600}
               height={1204}
               class="hero-image" style="width: 100%; height: auto"
@@ -30,10 +39,10 @@ import SiteImage from '../components/SiteImage.astro';
               loading="eager" fetchpriority="high"
             />
             <dl class="spec-strip">
-              <div><dt>Large debris, like bottle caps</dt><dd class="figure">&ge;&nbsp;20&nbsp;mm</dd></div>
-              <div><dt>Small debris, like cigarette butts</dt><dd class="figure">&ge;&nbsp;2&nbsp;mm</dd></div>
-              <div><dt>Collection target</dt><dd class="figure">&ge;&nbsp;90%</dd></div>
-              <div><dt>Vision accuracy target</dt><dd class="figure">&ge;&nbsp;95%</dd></div>
+              <div><dt>Smallest debris counted</dt><dd class="figure">5&nbsp;mm</dd></div>
+              <div><dt>Density error target</dt><dd class="figure">&le;&nbsp;15%</dd></div>
+              <div><dt>Run-to-run variation target</dt><dd class="figure">&le;&nbsp;10%</dd></div>
+              <div><dt>Total hardware cost</dt><dd class="figure">&lt;&nbsp;$350</dd></div>
             </dl>
           </figure>
         </div>
@@ -47,34 +56,54 @@ import SiteImage from '../components/SiteImage.astro';
 
           <div class="pb-10 mb-10 border-b border-border">
             <h3 class="text-xl font-medium text-foreground mb-4 mt-0">The problem</h3>
+            <p class="text-base leading-relaxed text-subtle mb-4">
+              Communities spend a lot of effort cleaning beaches and keeping trash out of waterways. Finding
+              out whether that effort works means measuring how much trash is on a shoreline and how that
+              changes over time. Today that measurement is mostly done by people walking a plot and counting
+              by hand.
+            </p>
+            <ul class="text-base leading-relaxed text-subtle mb-0 pl-5 space-y-2">
+              <li>
+                <strong class="font-medium text-foreground">Manual surveys take a lot of labor</strong>, which limits
+                how often and how widely shorelines can be monitored.
+              </li>
+              <li>
+                <strong class="font-medium text-foreground">Results vary between surveys.</strong> How much debris
+                surveyors find depends on the number of observers, the size and color of the debris, and the
+                type of shoreline (Burgess et&nbsp;al., 2024).
+              </li>
+              <li>
+                <strong class="font-medium text-foreground">Small pieces aren't counted.</strong> NOAA&apos;s standard
+                shoreline protocol only counts debris 2.5&nbsp;cm or larger.
+              </li>
+              <li>
+                <strong class="font-medium text-foreground">Drones miss small items.</strong> In California field
+                tests, aerial imagery found less debris than people counting on the ground (Moore et&nbsp;al., 2021).
+              </li>
+            </ul>
+          </div>
+
+          <div class="pb-10 mb-10 border-b border-border">
+            <h3 class="text-xl font-medium text-foreground mb-4 mt-0">The goal</h3>
             <p class="text-base leading-relaxed text-subtle mb-0">
-              Each year, approximately{" "}
-              <strong class="font-medium text-foreground">8 million metric tons of plastic</strong> enter the
-              oceans, with much of it washing up on shores, posing a serious threat to marine
-              ecosystems. Hundreds of thousands of volunteers every year around the world put in the
-              hours to remove this trash from the beaches, but only{" "}
-              <strong class="font-medium text-foreground">&lt;1%</strong> of the trash gets removed given
-              the sheer volume.
+              Design and validate a camera-equipped ground rover that environmental researchers and municipal
+              agencies could use to measure shoreline trash density accurately and repeatably, without counting
+              by hand. The rover counts at ground level, so it can see items much smaller than the 2.5&nbsp;cm
+              cutoff. It is tested against plots where the exact number, size and position of every item is known.
             </p>
           </div>
 
           <div class="pb-10 mb-10 border-b border-border">
-            <h3 class="text-xl font-medium text-foreground mb-4 mt-0">Hypothesis</h3>
-            <p class="text-base leading-relaxed text-subtle mb-0">
-              This project investigates whether DuneBroom, a low-cost autonomous beach-cleaning robot
-              combining machine-learning-based vision and mechanical sieving, can efficiently identify
-              and collect both large (&ge;&nbsp;20&nbsp;mm, e.g., bottle caps) and small (&ge;&nbsp;2&nbsp;mm, e.g.,
-              cigarette butts) debris from soft-sand environments.
-            </p>
-            <div class="mt-6 py-1 pl-6 border-l-2 border-accent">
-              <p class="text-base leading-relaxed text-subtle mb-0">
-                We hypothesize that its integrated scooper-sieve system will achieve{" "}
-                <strong class="font-medium text-foreground">&ge;&nbsp;90% collection efficiency</strong> across
-                debris sizes, while the ML vision model maintains{" "}
-                <strong class="font-medium text-foreground">&ge;&nbsp;95% accuracy</strong> in distinguishing
-                litter such as caps and wrappers from natural materials including seaweed and rocks.
-              </p>
-            </div>
+            <h3 class="text-xl font-medium text-foreground mb-2 mt-0">Design criteria</h3>
+            <p class="text-sm text-muted mb-6 mt-0">These are the targets the rover is being tested against. Testing is in progress.</p>
+            <dl class="m-0">
+              {criteria.map(({ name, target }) => (
+                <div class="grid grid-cols-1 sm:grid-cols-[200px_1fr] gap-1 sm:gap-6 py-4 border-t border-border first:border-t-0 first:pt-0">
+                  <dt class="text-base font-medium text-foreground">{name}</dt>
+                  <dd class="text-base leading-relaxed text-subtle m-0">{target}</dd>
+                </div>
+              ))}
+            </dl>
           </div>
 
           <div>
@@ -82,29 +111,29 @@ import SiteImage from '../components/SiteImage.astro';
             <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
               <div class="bg-surface p-5 rounded-xl border border-border">
                 <h4 class="text-base font-medium text-foreground mb-2 mt-0">
-                  ML-based vision
+                  Small-debris detection
                 </h4>
                 <p class="text-sm text-muted leading-relaxed mb-0">
-                  Machine learning model distinguishes trash from natural materials like seaweed and
-                  rocks with high accuracy.
+                  A YOLOv8 model fine-tuned on shoreline images separates litter from shells, rocks and
+                  seaweed, down to 5&nbsp;mm.
                 </p>
               </div>
               <div class="bg-surface p-5 rounded-xl border border-border">
                 <h4 class="text-base font-medium text-foreground mb-2 mt-0">
-                  Mechanical sieving
+                  Each item counted once
                 </h4>
                 <p class="text-sm text-muted leading-relaxed mb-0">
-                  Integrated scooper-sieve system collects debris while filtering out sand through a 2&nbsp;mm
-                  mesh.
+                  Phase-correlation ground tracking and lane bands prevent double counting between
+                  overlapping images and neighboring lanes.
                 </p>
               </div>
               <div class="bg-surface p-5 rounded-xl border border-border">
                 <h4 class="text-base font-medium text-foreground mb-2 mt-0">
-                  Autonomous operation
+                  Fully onboard
                 </h4>
                 <p class="text-sm text-muted leading-relaxed mb-0">
-                  Fully autonomous patrol and collection on soft-sand beach environments without human
-                  intervention.
+                  Capture, detection, counting and density calculation all run on a Raspberry Pi 5, with no
+                  internet connection or external computer.
                 </p>
               </div>
             </div>
@@ -112,13 +141,33 @@ import SiteImage from '../components/SiteImage.astro';
         </div>
       </section>
 
+      <section id="evolution" class="overview-section">
+        <div class="overview-content">
+          <h2 class="text-[32px] leading-tight font-medium tracking-tight text-foreground mb-6 mt-0">
+            From collecting trash to measuring it
+          </h2>
+          <p class="text-base leading-relaxed text-subtle mb-4">
+            The first version of DuneBroom was built to pick trash up. It used a machine-learning model to tell
+            litter from natural objects and a scooper to collect what it found. In practice, collection was
+            unreliable: the rover often dropped debris, and the approach didn&apos;t scale.
+          </p>
+          <p class="text-base leading-relaxed text-subtle mb-0">
+            Working on it showed a more basic gap. Without accurate, consistent measurement, communities
+            can&apos;t tell whether cleanup is reducing trash at all. After reviewing California&apos;s trash
+            monitoring methods and talking with researchers at the San Francisco Estuary Institute, the
+            project was redefined around measurement. The current rover is a new design. Apart from the
+            tracked chassis, its camera system, detection model, counting algorithms and validation plan are
+            all built from scratch.
+          </p>
+        </div>
+      </section>
+
       <section class="recognition-section">
         <div class="recognition-content">
           <h2 class="recognition-title">Recognition</h2>
           <p class="text-base leading-relaxed text-subtle max-w-xl mx-auto mb-4">
-            DuneBroom was recognized as one of the{" "}
-            <strong class="font-medium text-foreground">Conrad Challenge Innovators</strong>, highlighting
-            the project&apos;s student-led approach to environmental problem solving.
+            The earlier, trash-collecting version of DuneBroom was named a 2025–2026{" "}
+            <strong class="font-medium text-foreground">Conrad Challenge Innovator</strong>.
           </p>
           <a
             href="https://conrad.spacecenter.org/what-is-a-conrad-innovator/"

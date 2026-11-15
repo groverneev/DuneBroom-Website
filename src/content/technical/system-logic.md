@@ -1,34 +1,36 @@
 ---
-title: "System Logic"
-description: "How DuneBroom works end to end: autonomous patrol, event-driven debris identification, and discriminative actuation of the scooper-sieve system."
+title: "How a survey works"
+description: "How DuneBroom surveys a beach plot: calibrated downward imaging, YOLOv8 debris detection, phase-correlation ground tracking, and lane logic that counts every item exactly once to report trash density in items/m²."
 ---
 
-To achieve autonomous beach cleaning, the robot operates on a continuous decision-making loop designed to selectively target debris while actively ignoring natural elements. The system functions in an "Autonomous Patrol Mode," prioritizing energy efficiency and rapid reaction times to effectively cover large beach areas.
+DuneBroom doesn't pick trash up. It drives a plot of sand in parallel lanes, photographs the ground ahead of its tracks, and reports how many pieces of debris are there per square meter. The whole survey runs on the rover. It needs no internet connection and nobody has to count items by hand.
 
-## Autonomous patrol mode
+## Calibration
 
-Upon activation, the robot enters its primary operational state, referred to as "Autonomous Patrol". In this mode, the robot continuously traverses the beach while maintaining a low-power surveillance state. The primary input comes from ultrasonic distance sensors that continuously poll the environment to detect the proximity of objects in the robot's path. This allows the robot to "watch" for potential targets without the heavy battery drain and computational cost of continuous video processing.
+Before any survey, the camera is calibrated with objects of known size at heights between 25 and 50 cm. Calibration fixes how much ground each image covers and how many pixels make up a centimeter. The chosen height balances two needs: making 5 mm debris visible and covering enough ground per image. That height then stays fixed for every test.
 
-## Event-driven identification
+## Driving the lanes
 
-The system shifts from "Patrol" to "Analysis" only when a physical object is detected within a specific range (approximately 3 inches). This detection acts as a hardware trigger to initiate the vision system:
+The rover covers a plot, such as a 3 m × 3 m test area, in parallel lanes driven in the same direction. It turns around outside the plot. Lane spacing is set so the tracks only roll over ground the camera has already imaged. That way the rover never disturbs debris in a lane it hasn't surveyed yet.
 
-### Visual capture
+## Capture and detection
 
-The robot stops moving and captures a picture of the obstacle in front of it.
+As the rover moves, the Raspberry Pi 5 captures images from the downward-facing camera and runs a debris detector fine-tuned from YOLOv8 on each one. The model is trained to separate litter such as plastic fragments, bottle caps, wrappers and foam from shells, rocks, seaweed and twigs. It aims to find items down to 5 mm across.
 
-### Classification
+## Counting each item once
 
-A Machine Learning (ML) Model running on the robot analyzes the image to classify the object as either "Trash" (e.g., plastic bottles, wrappers) or "Nature" (e.g., rocks, seaweed).
+Consecutive images overlap, and neighboring lanes share an edge. A naive count would record the same bottle cap several times. DuneBroom prevents this in two steps:
 
-## Discriminative actuation
+### Measuring ground shift
 
-Based on the ML classification, the robot executes a specific physical response:
+Phase correlation in OpenCV compares each image with the one before it to measure how far the ground moved between frames.
 
-### Collection (trash detected)
+### New-ground strips and lane bands
 
-If the object is classified as trash, the collection mechanism is lowered to scoop the item. As the robot resumes movement, a filtration system sifts out sand through a 2mm mesh while retaining debris in a storage bag.
+Only detections centered in the strip of ground that is new in this frame, and inside the current lane's band, are counted. An item that shows up in three overlapping images is counted once, in the first image where it appears.
 
-### Preservation (nature detected)
+Each counted item is logged with its size, type and position, and each new strip is added to the running total of surveyed area.
 
-If the object is classified as nature, the scooper remains raised, and the robot executes a navigation maneuver to go around the element, ensuring the ecosystem remains undisturbed.
+## Results
+
+When the last lane is done, the rover computes **density = unique items ÷ surveyed area** in items/m². It saves the counts, the density estimate and a detection map showing where each item was found.

@@ -15,10 +15,10 @@ const system = entry.id === 'system-logic';
   <main id="main-content">
     <article class="py-16 max-w-[960px] mx-auto px-4 sm:px-8">
       <h1 class="text-4xl sm:text-5xl font-medium tracking-tight mb-3 mt-0">{entry.data.title}</h1>
-      <p class="text-lg text-muted mb-10">{system ? 'Process overview' : 'Hardware implementation'}</p>
-      <DiagramImage kind={system ? 'workflow' : 'hardware'} />
+      <p class="text-lg text-muted mb-10">{system ? 'Survey process' : 'Hardware and software'}</p>
+      <DiagramImage kind={system ? 'workflow' : 'layout'} />
       <div class="article-content"><Content /></div>
-      {system && <DiagramImage kind="collection" />}
+      <DiagramImage kind={system ? 'coverage' : 'architecture'} />
     </article>
   </main>
 </Layout>

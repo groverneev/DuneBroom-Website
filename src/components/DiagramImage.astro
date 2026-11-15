@@ -1,15 +1,32 @@
 ---
 import SiteImage from './SiteImage.astro';
-interface Props { kind: 'workflow' | 'hardware' | 'collection' }
 const diagrams = {
-  workflow: { src: '/Figure_1_Operational_Workflow.png', title: 'Autonomous operational workflow' },
-  hardware: { src: '/Figure_2_Hardware_Architecture.png', title: 'Hardware architecture' },
-  collection: { src: '/Figure_3_Collection_Sequence.png', title: 'Debris collection sequence' },
-};
+  workflow: {
+    src: '/survey-workflow.png',
+    title: 'Survey workflow, from calibration to the saved density estimate',
+    alt: 'Flowchart: load calibration, then for each lane drive forward, capture an image, measure ground shift, detect debris, keep detections in the new-ground strip and lane band, and log each new item. After all lanes, calculate density and save counts, density and a detection map.',
+  },
+  coverage: {
+    src: '/survey-coverage.png',
+    title: 'Survey lanes over a 3 m × 3 m plot, and how new-ground strips stop an item from being counted twice',
+    alt: 'Left: eight parallel survey lanes across a 3 m by 3 m plot, all driven in the same direction, with the return path outside the plot. Right: three overlapping images along the track; only the new-ground part of each is counted, so an item at 45 cm that appears in all three images is counted once.',
+  },
+  layout: {
+    src: '/survey-camera-layout.png',
+    title: 'Side view: the camera images the ground before the tracks reach it',
+    alt: 'Side view of the rover. A downward-facing camera on a mast and boom sits at a fixed height of 25 to 50 cm ahead of the tracked chassis, which carries the motor driver, Arduino and Raspberry Pi 5.',
+  },
+  architecture: {
+    src: '/onboard-architecture.png',
+    title: 'Onboard computing architecture',
+    alt: 'Block diagram: a USB camera feeds the Raspberry Pi 5, which runs image capture, ground-shift measurement, YOLOv8 debris detection, duplicate removal, and density calculation, and writes survey results. The Pi sends motor commands over USB serial to an Arduino, which drives the left and right track motors through a motor driver. A battery pack powers the system.',
+  },
+} as const;
+interface Props { kind: keyof typeof diagrams }
 const { kind } = Astro.props;
 const diagram = diagrams[kind];
 ---
 <figure class="diagram" aria-labelledby={`${kind}-caption`}>
-  <SiteImage src={diagram.src} alt={diagram.title} loading="lazy" class="block w-full h-auto rounded-md" />
+  <SiteImage src={diagram.src} alt={diagram.alt} loading="lazy" class="block w-full h-auto rounded-md" />
   <figcaption id={`${kind}-caption`}>{diagram.title}</figcaption>
 </figure>
