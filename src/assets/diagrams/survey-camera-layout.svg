@@ -1,59 +1,57 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 2048 1156" font-family="'DejaVu Sans', Verdana, 'Bitstream Vera Sans', sans-serif" font-size="44" font-weight="bold" text-anchor="middle" fill="#000">
-<rect width="2048" height="1156" fill="#fff">
-</rect>
-<path d="M541 350L335 938H747Z" fill="#e6f0fa" stroke="#cadcef" stroke-width="3" stroke-dasharray="10 6">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 2048 1156" font-family="'DejaVu Sans', Verdana, 'Bitstream Vera Sans', sans-serif" font-size="44" font-weight="bold" text-anchor="middle" class="dg-f-ink">
+<path d="M541 350L335 938H747Z" stroke-width="3" stroke-dasharray="10 6" class="dg-f-cone-f dg-s-cone-s">
 </path>
 <rect x="334" y="935" width="414" height="25" fill="#7293b9">
 </rect>
-<circle cx="333.5" cy="925.5" r="12.7" fill="#d85a30">
+<circle cx="333.5" cy="925.5" r="12.7" class="dg-f-coral-s">
 </circle>
-<circle cx="437.5" cy="925.5" r="12.7" fill="#d85a30">
+<circle cx="437.5" cy="925.5" r="12.7" class="dg-f-coral-s">
 </circle>
-<circle cx="585.5" cy="925.5" r="12.7" fill="#d85a30">
+<circle cx="585.5" cy="925.5" r="12.7" class="dg-f-coral-s">
 </circle>
-<circle cx="837.5" cy="925.5" r="12.7" fill="#d85a30">
+<circle cx="837.5" cy="925.5" r="12.7" class="dg-f-coral-s">
 </circle>
-<rect x="23" y="940" width="1955" height="89" fill="#efe3c8">
+<rect x="23" y="940" width="1955" height="89" class="dg-f-sand">
 </rect>
-<path d="M23 940H1978" stroke="#b9a57a" stroke-width="5">
+<path d="M23 940H1978" stroke-width="5" class="dg-s-sand-line">
 </path>
 <rect x="334" y="943" width="414" height="17" fill="#7293b9">
 </rect>
-<g fill="#fff" stroke="#7a7a7a" stroke-width="4">
+<g fill="none" stroke-width="4" class="dg-s-gray-line">
 <rect x="518.5" y="256" width="499.5" height="47">
 </rect>
 <rect x="970.5" y="303" width="47.5" height="466">
 </rect>
 </g>
-<rect x="490" y="303" width="102" height="59" fill="#222" stroke="#000" stroke-width="2">
+<rect x="490" y="303" width="102" height="59" stroke-width="2" class="dg-f-cam-body dg-s-hw-s">
 </rect>
-<circle cx="541.5" cy="362.5" r="15" fill="#5a8fd6" stroke="#000" stroke-width="2">
+<circle cx="541.5" cy="362.5" r="15" fill="#5a8fd6" stroke-width="2" class="dg-s-hw-s">
 </circle>
-<rect x="911.5" y="801.5" width="623.5" height="134" rx="58" fill="#3a3a3a" stroke="#000" stroke-width="3.5">
+<rect x="911.5" y="801.5" width="623.5" height="134" rx="58" stroke-width="3.5" class="dg-f-track dg-s-hw-s">
 </rect>
-<circle cx="985.5" cy="868.5" r="37.3" fill="#9a9a9a" stroke="#000" stroke-width="2.5">
+<circle cx="985.5" cy="868.5" r="37.3" stroke-width="2.5" class="dg-f-wheel dg-s-hw-s">
 </circle>
-<circle cx="1104" cy="868.5" r="37.3" fill="#9a9a9a" stroke="#000" stroke-width="2.5">
+<circle cx="1104" cy="868.5" r="37.3" stroke-width="2.5" class="dg-f-wheel dg-s-hw-s">
 </circle>
-<circle cx="1222.5" cy="868.5" r="37.3" fill="#9a9a9a" stroke="#000" stroke-width="2.5">
+<circle cx="1222.5" cy="868.5" r="37.3" stroke-width="2.5" class="dg-f-wheel dg-s-hw-s">
 </circle>
-<circle cx="1341" cy="868.5" r="37.3" fill="#9a9a9a" stroke="#000" stroke-width="2.5">
+<circle cx="1341" cy="868.5" r="37.3" stroke-width="2.5" class="dg-f-wheel dg-s-hw-s">
 </circle>
-<circle cx="1459.5" cy="868.5" r="37.3" fill="#9a9a9a" stroke="#000" stroke-width="2.5">
+<circle cx="1459.5" cy="868.5" r="37.3" stroke-width="2.5" class="dg-f-wheel dg-s-hw-s">
 </circle>
-<rect x="883" y="767.5" width="681" height="31" fill="#1f1f1f" stroke="#000" stroke-width="3.5">
+<rect x="883" y="767.5" width="681" height="31" stroke-width="3.5" class="dg-f-deck dg-s-hw-s">
 </rect>
-<g stroke="#000" stroke-width="2.5">
-<rect x="1063" y="734.5" width="128.5" height="34" fill="#555">
+<g stroke-width="2.5" class="dg-s-hw-s">
+<rect x="1063" y="734.5" width="128.5" height="34" class="dg-f-mdriver">
 </rect>
 <rect x="1225.5" y="725.5" width="130" height="43" fill="#2e6fb0">
 </rect>
 <rect x="1386.5" y="693" width="149" height="75.5" fill="#3c8d3c">
 </rect>
 </g>
-<path d="M186 362.5H487" stroke="#7a7a7a" stroke-width="2.5" stroke-dasharray="2.5 5.7">
+<path d="M186 362.5H487" stroke-width="2.5" stroke-dasharray="2.5 5.7" class="dg-s-gray-line">
 </path>
-<g fill="none" stroke="#000" stroke-width="4" stroke-linecap="round" stroke-linejoin="round">
+<g fill="none" stroke-width="4" stroke-linecap="round" stroke-linejoin="round" class="dg-s-ink">
 <path d="M214.5 374V928">
 </path>
 <path d="M206.5 387L214.5 373L222.5 387">
@@ -61,11 +59,11 @@
 <path d="M206.5 915L214.5 929L222.5 915">
 </path>
 </g>
-<path d="M1084.5 110.5H715" stroke="#127a5a" stroke-width="7" stroke-linecap="round">
+<path d="M1084.5 110.5H715" stroke-width="7" stroke-linecap="round" class="dg-s-travel">
 </path>
-<path d="M721 95L689 110.5L721 126Z" fill="#127a5a" stroke="#127a5a" stroke-width="5" stroke-linejoin="round">
+<path d="M721 95L689 110.5L721 126Z" stroke-width="5" stroke-linejoin="round" class="dg-f-travel dg-s-travel">
 </path>
-<g stroke="#333" stroke-width="4">
+<g stroke-width="4" class="dg-s-leader">
 <path d="M410 216L522 300">
 </path>
 <path d="M1167 218L798 256">
@@ -91,8 +89,8 @@
 <text x="1831" y="865" textLength="388.1" lengthAdjust="spacingAndGlyphs">Tracked chassis</text>
 <text x="432" y="1103" textLength="763.3" lengthAdjust="spacingAndGlyphs">Ground footprint (known area)</text>
 <text x="1240.5" y="1103" textLength="360.6" lengthAdjust="spacingAndGlyphs">Surface debris</text>
-<text x="882" y="77" fill="#127a5a" textLength="453" lengthAdjust="spacingAndGlyphs">Direction of travel</text>
-<g fill="#1f5fb0" font-size="37.5">
+<text x="882" y="77" textLength="453" lengthAdjust="spacingAndGlyphs" class="dg-f-travel">Direction of travel</text>
+<g font-size="37.5" class="dg-f-cone-text">
 <text x="541" y="583" textLength="415.4" lengthAdjust="spacingAndGlyphs">Camera sees debris</text>
 <text x="541" y="627" textLength="282.5" lengthAdjust="spacingAndGlyphs">before tracks</text>
 <text x="541" y="671" textLength="247.8" lengthAdjust="spacingAndGlyphs">pass over it</text>
