@@ -113,38 +113,6 @@ body {
   box-shadow: 0 8px 24px rgba(0, 0, 0, 0.06);
 }
 
-.spec-strip {
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  gap: 16px 24px;
-  margin: 20px 0 0;
-  padding-top: 16px;
-  border-top: 1px solid var(--border);
-}
-
-@media (min-width: 640px) {
-  .spec-strip { grid-template-columns: repeat(4, 1fr); }
-}
-
-.spec-strip > div {
-  display: flex;
-  flex-direction: column-reverse;
-  justify-content: flex-end;
-}
-
-.spec-strip dd {
-  margin: 0;
-  font-size: 20px;
-  line-height: 28px;
-  color: var(--foreground);
-}
-
-.spec-strip dt {
-  font-size: 13px;
-  line-height: 20px;
-  color: var(--muted);
-}
-
 .btn-primary,
 .btn-secondary {
   display: inline-flex;
