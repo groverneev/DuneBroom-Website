@@ -1,0 +1,93 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1919 958" font-family="'DejaVu Sans', Verdana, 'Bitstream Vera Sans', sans-serif" font-size="30.6" text-anchor="middle" fill="#000">
+<rect width="1919" height="958" fill="#fff">
+</rect>
+<rect x="533" y="103" width="716" height="750" rx="10" fill="#f4fbf8" stroke="#1d9e75" stroke-width="4">
+</rect>
+<text x="891" y="153" font-size="33.7" font-weight="bold" fill="#0f6e56" textLength="490.2" lengthAdjust="spacingAndGlyphs">Raspberry Pi 5 (on board)</text>
+<rect x="585" y="182" width="612" height="100" rx="4" fill="#e1f5ee" stroke="#1d9e75" stroke-width="3.6">
+</rect>
+<text x="891" y="241" font-size="27.5" textLength="341.8" lengthAdjust="spacingAndGlyphs">Image capture (OpenCV)</text>
+<rect x="585" y="315" width="612" height="100" rx="4" fill="#e1f5ee" stroke="#1d9e75" stroke-width="3.6">
+</rect>
+<text x="891" y="357" font-size="27.5" textLength="371" lengthAdjust="spacingAndGlyphs">Ground-shift measurement</text>
+<text x="891" y="391" font-size="27.5" textLength="260.7" lengthAdjust="spacingAndGlyphs">(phase correlation)</text>
+<rect x="585" y="449" width="612" height="100" rx="4" fill="#e1f5ee" stroke="#1d9e75" stroke-width="3.6">
+</rect>
+<text x="891" y="508" font-size="27.5" textLength="364.3" lengthAdjust="spacingAndGlyphs">Debris detection (YOLOv8)</text>
+<rect x="585" y="583" width="612" height="100" rx="4" fill="#e1f5ee" stroke="#1d9e75" stroke-width="3.6">
+</rect>
+<text x="891" y="625" font-size="27.5" textLength="251.7" lengthAdjust="spacingAndGlyphs">Duplicate removal</text>
+<text x="891" y="658" font-size="27.5" textLength="433" lengthAdjust="spacingAndGlyphs">(new-ground strip + lane band)</text>
+<rect x="585" y="717" width="612" height="100" rx="4" fill="#e1f5ee" stroke="#1d9e75" stroke-width="3.6">
+</rect>
+<text x="891" y="759.5" font-size="27.5" textLength="323.1" lengthAdjust="spacingAndGlyphs">Density calculation and</text>
+<text x="891" y="792" font-size="27.5" textLength="326.3" lengthAdjust="spacingAndGlyphs">data logging (items/m²)</text>
+<path d="M891 284L891 288" stroke="#2b2b2b" stroke-width="3.6" stroke-linecap="round">
+</path>
+<path d="M881 287L891 306L901 287Z" fill="#2b2b2b" stroke="#2b2b2b" stroke-width="1.5" stroke-linejoin="round">
+</path>
+<path d="M891 418L891 422" stroke="#2b2b2b" stroke-width="3.6" stroke-linecap="round">
+</path>
+<path d="M881 421L891 440L901 421Z" fill="#2b2b2b" stroke="#2b2b2b" stroke-width="1.5" stroke-linejoin="round">
+</path>
+<path d="M891 552L891 556" stroke="#2b2b2b" stroke-width="3.6" stroke-linecap="round">
+</path>
+<path d="M881 555L891 574L901 555Z" fill="#2b2b2b" stroke="#2b2b2b" stroke-width="1.5" stroke-linejoin="round">
+</path>
+<path d="M891 686L891 690" stroke="#2b2b2b" stroke-width="3.6" stroke-linecap="round">
+</path>
+<path d="M881 689L891 708L901 689Z" fill="#2b2b2b" stroke="#2b2b2b" stroke-width="1.5" stroke-linejoin="round">
+</path>
+<rect x="56" y="217" width="340" height="179" rx="4" fill="#e6f1fb" stroke="#378add" stroke-width="3.6">
+</rect>
+<text x="226.5" y="299" textLength="188.1" lengthAdjust="spacingAndGlyphs">USB camera</text>
+<text x="226.5" y="333" textLength="286.4" lengthAdjust="spacingAndGlyphs">(downward-facing)</text>
+<rect x="1437" y="217" width="408" height="179" rx="4" fill="#e6f1fb" stroke="#378add" stroke-width="3.6">
+</rect>
+<text x="1641.5" y="299" textLength="118.4" lengthAdjust="spacingAndGlyphs">Arduino</text>
+<text x="1641.5" y="333" textLength="231.5" lengthAdjust="spacingAndGlyphs">(motor control)</text>
+<rect x="56" y="454" width="340" height="154" rx="4" fill="#faece7" stroke="#d85a30" stroke-width="3.6">
+</rect>
+<text x="226.5" y="508" font-size="27.5" textLength="205.8" lengthAdjust="spacingAndGlyphs">Survey results:</text>
+<text x="226.5" y="540.5" font-size="27.5" textLength="218.9" lengthAdjust="spacingAndGlyphs">counts, density,</text>
+<text x="226.5" y="573" font-size="27.5" textLength="199.7" lengthAdjust="spacingAndGlyphs">detection map</text>
+<rect x="56" y="642" width="340" height="162" rx="4" fill="#faeeda" stroke="#ba7517" stroke-width="3.6">
+</rect>
+<text x="226.5" y="731.5" textLength="195.7" lengthAdjust="spacingAndGlyphs">Battery pack</text>
+<rect x="1437" y="495" width="408" height="146" rx="4" fill="#f1efe8" stroke="#888780" stroke-width="3.6">
+</rect>
+<text x="1641.5" y="577" textLength="188.2" lengthAdjust="spacingAndGlyphs">Motor driver</text>
+<rect x="1437" y="716" width="408" height="145" rx="4" fill="#f1efe8" stroke="#888780" stroke-width="3.6">
+</rect>
+<text x="1641.5" y="780" textLength="162.4" lengthAdjust="spacingAndGlyphs">DC motors</text>
+<text x="1641.5" y="814" textLength="294" lengthAdjust="spacingAndGlyphs">(left + right tracks)</text>
+<path d="M402 305L560.3 242.6" stroke="#2b2b2b" stroke-width="3.6" stroke-linecap="round">
+</path>
+<path d="M563 252.3L577 236L555.7 233.7Z" fill="#2b2b2b" stroke="#2b2b2b" stroke-width="1.5" stroke-linejoin="round">
+</path>
+<rect x="461" y="252" width="57" height="31" fill="#fff">
+</rect>
+<text x="490" y="277" font-size="25.9" fill="#444" textLength="53.2" lengthAdjust="spacingAndGlyphs">USB</text>
+<path d="M1256 307L1410 307" stroke="#2b2b2b" stroke-width="3.6" stroke-linecap="round">
+</path>
+<path d="M1409 317L1428 307L1409 297Z" fill="#2b2b2b" stroke="#2b2b2b" stroke-width="1.5" stroke-linejoin="round">
+</path>
+<text x="1343" y="278" font-size="25.9" fill="#444" textLength="131.7" lengthAdjust="spacingAndGlyphs">USB serial</text>
+<path d="M1641.5 402L1641.5 468" stroke="#2b2b2b" stroke-width="3.6" stroke-linecap="round">
+</path>
+<path d="M1631.5 467L1641.5 486L1651.5 467Z" fill="#2b2b2b" stroke="#2b2b2b" stroke-width="1.5" stroke-linejoin="round">
+</path>
+<path d="M1641.5 647L1641.5 688" stroke="#2b2b2b" stroke-width="3.6" stroke-linecap="round">
+</path>
+<path d="M1631.5 687L1641.5 706L1651.5 687Z" fill="#2b2b2b" stroke="#2b2b2b" stroke-width="1.5" stroke-linejoin="round">
+</path>
+<path d="M581 725L415.6 554.9" stroke="#d85a30" stroke-width="3.4" stroke-linecap="round">
+</path>
+<path d="M423.4 548.6L403 542L409.1 562.6Z" fill="#d85a30" stroke="#d85a30" stroke-width="1.5" stroke-linejoin="round">
+</path>
+<path d="M402 723.5H421" stroke="#ba7517" stroke-width="3.6">
+</path>
+<path d="M508 715L524.5 723.5L508 732Z" fill="#ba7517">
+</path>
+<text x="465.5" y="730" font-size="25.9" fill="#444" textLength="78.3" lengthAdjust="spacingAndGlyphs">Power</text>
+</svg>

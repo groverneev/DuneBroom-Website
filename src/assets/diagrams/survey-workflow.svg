@@ -1,0 +1,121 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1473 2048" font-family="'DejaVu Sans', Verdana, 'Bitstream Vera Sans', sans-serif" font-size="28.65" text-anchor="middle" fill="#000">
+<rect width="1473" height="2048" fill="#fff">
+</rect>
+<rect x="451" y="48" width="570" height="92" rx="46" fill="#eeedfe" stroke="#534ab7" stroke-width="4">
+</rect>
+<text x="736" y="103" font-weight="bold" font-size="30" textLength="209.2" lengthAdjust="spacingAndGlyphs">Start survey</text>
+<rect x="365" y="189" width="742" height="98" rx="3" fill="#e1f5ee" stroke="#1d9e75" stroke-width="4">
+</rect>
+<text x="736" y="230.5" textLength="229.4" lengthAdjust="spacingAndGlyphs">Load calibration</text>
+<text x="736" y="263" textLength="547.9" lengthAdjust="spacingAndGlyphs">(image ground area, pixels per meter)</text>
+<rect x="365" y="336" width="742" height="98" rx="3" fill="#e1f5ee" stroke="#1d9e75" stroke-width="4">
+</rect>
+<text x="736" y="377.5" textLength="456.8" lengthAdjust="spacingAndGlyphs">Rover drives forward along lane</text>
+<text x="736" y="410" textLength="336.6" lengthAdjust="spacingAndGlyphs">(Arduino motor control)</text>
+<rect x="365" y="483" width="742" height="98" rx="3" fill="#e1f5ee" stroke="#1d9e75" stroke-width="4">
+</rect>
+<text x="736" y="541" textLength="562.1" lengthAdjust="spacingAndGlyphs">Capture image from downward camera</text>
+<rect x="365" y="630" width="742" height="98" rx="3" fill="#e1f5ee" stroke="#1d9e75" stroke-width="4">
+</rect>
+<text x="736" y="671.5" textLength="545.7" lengthAdjust="spacingAndGlyphs">Measure ground shift since last image</text>
+<text x="736" y="704" textLength="396.8" lengthAdjust="spacingAndGlyphs">(OpenCV phase correlation)</text>
+<rect x="365" y="777" width="742" height="98" rx="3" fill="#e1f5ee" stroke="#1d9e75" stroke-width="4">
+</rect>
+<text x="736" y="835" textLength="481.7" lengthAdjust="spacingAndGlyphs">Detect debris with YOLOv8 model</text>
+<rect x="365" y="924" width="742" height="98" rx="3" fill="#e1f5ee" stroke="#1d9e75" stroke-width="4">
+</rect>
+<text x="736" y="965.5" textLength="707.5" lengthAdjust="spacingAndGlyphs">Keep only detections centered in the new-ground</text>
+<text x="736" y="998" textLength="676.9" lengthAdjust="spacingAndGlyphs">strip and lane band (prevents double counting)</text>
+<rect x="365" y="1071" width="742" height="98" rx="3" fill="#e1f5ee" stroke="#1d9e75" stroke-width="4">
+</rect>
+<text x="736" y="1112.5" textLength="569.3" lengthAdjust="spacingAndGlyphs">Log each new item: size, type, position;</text>
+<text x="736" y="1145" textLength="447.5" lengthAdjust="spacingAndGlyphs">add new strip to surveyed area</text>
+<rect x="365" y="1586" width="742" height="98" rx="3" fill="#e1f5ee" stroke="#1d9e75" stroke-width="4">
+</rect>
+<text x="736" y="1627.5" textLength="510.2" lengthAdjust="spacingAndGlyphs">Calculate density = unique items ÷</text>
+<text x="736" y="1660" textLength="365.3" lengthAdjust="spacingAndGlyphs">surveyed area (items/m²)</text>
+<rect x="365" y="1733" width="742" height="98" rx="3" fill="#e1f5ee" stroke="#1d9e75" stroke-width="4">
+</rect>
+<text x="736" y="1791" textLength="587.6" lengthAdjust="spacingAndGlyphs">Save counts, density, and detection map</text>
+<rect x="451" y="1886" width="570" height="92" rx="46" fill="#eeedfe" stroke="#534ab7" stroke-width="4">
+</rect>
+<text x="736" y="1941" font-weight="bold" font-size="30" textLength="187.2" lengthAdjust="spacingAndGlyphs">End survey</text>
+<path d="M461 1297L736 1224L1011 1297L736 1370Z" fill="#faeeda" stroke="#ba7517" stroke-width="4" stroke-linejoin="miter">
+</path>
+<text x="736" y="1306.5" textLength="227.4" lengthAdjust="spacingAndGlyphs">Lane complete?</text>
+<path d="M462 1483L736 1412L1010 1483L736 1554Z" fill="#faeeda" stroke="#ba7517" stroke-width="4" stroke-linejoin="miter">
+</path>
+<text x="736" y="1492.5" textLength="216.6" lengthAdjust="spacingAndGlyphs">All lanes done?</text>
+<rect x="1166" y="1445" width="277" height="79" rx="3" fill="#f1efe8" stroke="#888780" stroke-width="3.6">
+</rect>
+<text x="1304" y="1476.5" font-size="25.7" textLength="223.5" lengthAdjust="spacingAndGlyphs">Turn outside plot;</text>
+<text x="1304" y="1507" font-size="25.7" textLength="188.1" lengthAdjust="spacingAndGlyphs">start next lane</text>
+<path d="M736 147L736 162" stroke="#2b2b2b" stroke-width="3.6" stroke-linecap="round">
+</path>
+<path d="M727.5 161L736 178L744.5 161Z" fill="#2b2b2b" stroke="#2b2b2b" stroke-width="1.5" stroke-linejoin="round">
+</path>
+<path d="M736 294L736 309" stroke="#2b2b2b" stroke-width="3.6" stroke-linecap="round">
+</path>
+<path d="M727.5 308L736 325L744.5 308Z" fill="#2b2b2b" stroke="#2b2b2b" stroke-width="1.5" stroke-linejoin="round">
+</path>
+<path d="M736 441L736 456" stroke="#2b2b2b" stroke-width="3.6" stroke-linecap="round">
+</path>
+<path d="M727.5 455L736 472L744.5 455Z" fill="#2b2b2b" stroke="#2b2b2b" stroke-width="1.5" stroke-linejoin="round">
+</path>
+<path d="M736 588L736 603" stroke="#2b2b2b" stroke-width="3.6" stroke-linecap="round">
+</path>
+<path d="M727.5 602L736 619L744.5 602Z" fill="#2b2b2b" stroke="#2b2b2b" stroke-width="1.5" stroke-linejoin="round">
+</path>
+<path d="M736 735L736 750" stroke="#2b2b2b" stroke-width="3.6" stroke-linecap="round">
+</path>
+<path d="M727.5 749L736 766L744.5 749Z" fill="#2b2b2b" stroke="#2b2b2b" stroke-width="1.5" stroke-linejoin="round">
+</path>
+<path d="M736 882L736 897" stroke="#2b2b2b" stroke-width="3.6" stroke-linecap="round">
+</path>
+<path d="M727.5 896L736 913L744.5 896Z" fill="#2b2b2b" stroke="#2b2b2b" stroke-width="1.5" stroke-linejoin="round">
+</path>
+<path d="M736 1029L736 1044" stroke="#2b2b2b" stroke-width="3.6" stroke-linecap="round">
+</path>
+<path d="M727.5 1043L736 1060L744.5 1043Z" fill="#2b2b2b" stroke="#2b2b2b" stroke-width="1.5" stroke-linejoin="round">
+</path>
+<path d="M736 1176L736 1198" stroke="#2b2b2b" stroke-width="3.6" stroke-linecap="round">
+</path>
+<path d="M727.5 1197L736 1214L744.5 1197Z" fill="#2b2b2b" stroke="#2b2b2b" stroke-width="1.5" stroke-linejoin="round">
+</path>
+<path d="M736 1377L736 1385" stroke="#2b2b2b" stroke-width="3.6" stroke-linecap="round">
+</path>
+<path d="M727.5 1384L736 1401L744.5 1384Z" fill="#2b2b2b" stroke="#2b2b2b" stroke-width="1.5" stroke-linejoin="round">
+</path>
+<path d="M736 1556L736 1559" stroke="#2b2b2b" stroke-width="3.6" stroke-linecap="round">
+</path>
+<path d="M727.5 1558L736 1575L744.5 1558Z" fill="#2b2b2b" stroke="#2b2b2b" stroke-width="1.5" stroke-linejoin="round">
+</path>
+<path d="M736 1691L736 1706" stroke="#2b2b2b" stroke-width="3.6" stroke-linecap="round">
+</path>
+<path d="M727.5 1705L736 1722L744.5 1705Z" fill="#2b2b2b" stroke="#2b2b2b" stroke-width="1.5" stroke-linejoin="round">
+</path>
+<path d="M736 1838L736 1860" stroke="#2b2b2b" stroke-width="3.6" stroke-linecap="round">
+</path>
+<path d="M727.5 1859L736 1876L744.5 1859Z" fill="#2b2b2b" stroke="#2b2b2b" stroke-width="1.5" stroke-linejoin="round">
+</path>
+<path d="M459 1296.5H164.5V383" fill="none" stroke="#2b2b2b" stroke-width="3.6">
+</path>
+<path d="M169 385.5L339 385.5" stroke="#2b2b2b" stroke-width="3.6" stroke-linecap="round">
+</path>
+<path d="M338 394L355 385.5L338 377Z" fill="#2b2b2b" stroke="#2b2b2b" stroke-width="1.5" stroke-linejoin="round">
+</path>
+<path d="M1308 1445V383" fill="none" stroke="#2b2b2b" stroke-width="3.6">
+</path>
+<path d="M1303 385.5L1134 385.5" stroke="#2b2b2b" stroke-width="3.6" stroke-linecap="round">
+</path>
+<path d="M1135 377L1118 385.5L1135 394Z" fill="#2b2b2b" stroke="#2b2b2b" stroke-width="1.5" stroke-linejoin="round">
+</path>
+<path d="M1013 1484L1139 1484" stroke="#2b2b2b" stroke-width="3.6" stroke-linecap="round">
+</path>
+<path d="M1138 1492.5L1155 1484L1138 1475.5Z" fill="#2b2b2b" stroke="#2b2b2b" stroke-width="1.5" stroke-linejoin="round">
+</path>
+<text x="794.5" y="1392" font-size="25.7" textLength="41.5" lengthAdjust="spacingAndGlyphs">Yes</text>
+<text x="794.5" y="1575" font-size="25.7" textLength="41.5" lengthAdjust="spacingAndGlyphs">Yes</text>
+<text x="1120" y="1466" font-size="25.7" textLength="35" lengthAdjust="spacingAndGlyphs">No</text>
+<text x="0" y="1" font-size="25.7" transform="translate(144 867) rotate(-90)" textLength="35" lengthAdjust="spacingAndGlyphs">No</text>
+</svg>
